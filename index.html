@@ -3,92 +3,145 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>ART ZEDMO EXCHANGE</title>
+<title>ART ZEDMO EXCHANGE V2</title>
 <style>
   :root{--bg:#0a0a0f;--surface:#12121a;--surface-raised:#1a1a25;--surface-strong:#222230;--border:#2a2a3a;--text-primary:#f0f0f5;--text-secondary:#a0a0b0;--text-tertiary:#6a6a7a;--accent:#00d4aa;--accent-dim:rgba(0,212,170,0.12);--danger:#ff4757;--positive:#2ed573;--btc:#f7931a;--usdt:#26a17b;--eth:#627eea;--sol:#9945ff;--xrp:#23292f;--radius-md:12px;--radius-lg:16px;--radius-xl:20px;--font:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
   *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{height:100%;background:var(--bg);color:var(--text-primary);font-family:var(--font);overflow:hidden}
   #app{height:100%;display:flex;flex-direction:column}
- .header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:var(--surface)}
- .logo{font-size:15px;font-weight:700;letter-spacing:2px;color:var(--accent)}
- .icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface-raised);display:flex;align-items:center;justify-content:center;cursor:pointer}
- .main{flex:1;overflow-y:auto;padding-bottom:80px}.main::-webkit-scrollbar{width:0}
- .page{display:none;padding:16px 20px}.page.active{display:block}
- .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px}
- .card-title{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px}
- .balance-hero{text-align:center;padding:24px 16px;background:linear-gradient(135deg,var(--surface),var(--surface-raised));border-radius:var(--radius-xl);border:1px solid var(--border);margin-bottom:16px}
- .balance-value{font-size:32px;font-weight:700}
- .tabs{display:flex;gap:8px;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:4px}
- .tab{flex:1;padding:10px 0;border-radius:var(--radius-md);border:none;background:transparent;color:var(--text-secondary);font-weight:600;cursor:pointer}.tab.active{background:var(--accent);color:var(--bg)}
- .input-wrap{display:flex;gap:10px;align-items:center}
- .input{flex:1;padding:12px 14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);font-size:15px;outline:none;width:100%}
- .input:focus{border-color:var(--accent)}
- .select{flex:1;padding:12px 14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);font-weight:600}
- .crypto-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
- .badge-btc{background:var(--btc)}.badge-usdt{background:var(--usdt)}.badge-eth{background:var(--eth)}.badge-sol{background:var(--sol)}.badge-xrp{background:var(--xrp)}.badge-cfa{background:#fff;color:#000}
- .swap-wrap{display:flex;justify-content:center;margin:-6px 0 10px}.swap-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--border);background:var(--surface-strong);color:var(--accent);cursor:pointer}
- .rate-bar{display:flex;justify-content:center;gap:8px;padding:10px;background:var(--accent-dim);border-radius:var(--radius-md);margin-bottom:16px;font-size:12px;color:var(--accent)}
- .btn{width:100%;padding:14px;border-radius:var(--radius-md);border:none;background:var(--accent);color:var(--bg);font-weight:700;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:8px}
- .btn:disabled{opacity:.4}.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-primary)}.btn-danger{background:var(--danger);color:#fff}.btn-sm{padding:8px 14px;font-size:13px;width:auto}
- .networks{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
- .net{padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface-raised);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}.net.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
- .bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:8px 0 16px;z-index:100}
- .nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 16px;color:var(--text-tertiary);font-size:10px;font-weight:600;background:transparent;border:none;cursor:pointer}.nav-item.active{color:var(--accent)}
- .wallet-item,.history-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
- .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-100px);background:var(--surface-strong);padding:12px 20px;border-radius:12px;border:1px solid var(--border);font-size:13px;font-weight:600;z-index:300;transition:.3s}.toast.show{transform:translateX(-50%) translateY(0)}
- .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:200}.modal-overlay.active{display:flex}
- .modal{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:20px}
- .qr-box{background:#fff;border-radius:16px;padding:16px;display:flex;justify-content:center;align-items:center;margin:16px 0}
- .addr-box{background:var(--surface-raised);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:12px;word-break:break-all;color:var(--text-secondary);margin-bottom:12px}
- .ticker{display:flex;gap:12px;overflow-x:auto;padding:8px 0}.ticker::-webkit-scrollbar{display:none}
- .ticker-item{flex-shrink:0;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--surface);min-width:130px}
+.header{padding:16px 20px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);background:var(--surface)}
+.logo{font-size:15px;font-weight:700;letter-spacing:2px;color:var(--accent)}
+.icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--surface-raised);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.main{flex:1;overflow-y:auto;padding-bottom:90px}.main::-webkit-scrollbar{width:0}
+.page{display:none;padding:16px 20px}.page.active{display:block}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;margin-bottom:12px}
+.card-title{font-size:13px;font-weight:600;color:var(--text-secondary);margin-bottom:12px;display:flex;justify-content:space-between;align-items:center}
+.balance-hero{text-align:center;padding:24px 16px;background:linear-gradient(135deg,var(--surface),var(--surface-raised));border-radius:var(--radius-xl);border:1px solid var(--border);margin-bottom:16px}
+.balance-value{font-size:32px;font-weight:700}
+.tabs{display:flex;gap:8px;margin-bottom:16px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:4px}
+.tab{flex:1;padding:10px 0;border-radius:var(--radius-md);border:none;background:transparent;color:var(--text-secondary);font-weight:600;cursor:pointer}.tab.active{background:var(--accent);color:var(--bg)}
+.input-wrap{display:flex;gap:10px;align-items:center}
+.input{flex:1;padding:12px 14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);font-size:15px;outline:none;width:100%}
+.input:focus{border-color:var(--accent)}
+.select{flex:1;padding:12px 14px;border-radius:var(--radius-md);border:1px solid var(--border);background:var(--surface-raised);color:var(--text-primary);font-weight:600}
+.crypto-badge{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#fff;flex-shrink:0}
+.badge-btc{background:var(--btc)}.badge-usdt{background:var(--usdt)}.badge-eth{background:var(--eth)}.badge-sol{background:var(--sol)}.badge-xrp{background:var(--xrp)}.badge-cfa{background:#fff;color:#000}
+.swap-wrap{display:flex;justify-content:center;margin:-6px 0 10px}.swap-btn{width:44px;height:44px;border-radius:50%;border:2px solid var(--border);background:var(--surface-strong);color:var(--accent);cursor:pointer}
+.rate-bar{display:flex;justify-content:center;gap:8px;padding:10px;background:var(--accent-dim);border-radius:var(--radius-md);margin-bottom:16px;font-size:12px;color:var(--accent)}
+.btn{width:100%;padding:14px;border-radius:var(--radius-md);border:none;background:var(--accent);color:var(--bg);font-weight:700;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:8px}
+.btn:disabled{opacity:.4}.btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-primary)}.btn-danger{background:var(--danger);color:#fff}.btn-sm{padding:8px 14px;font-size:13px;width:auto}
+.networks{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.net{padding:8px 14px;border-radius:20px;border:1px solid var(--border);background:var(--surface-raised);color:var(--text-secondary);font-size:12px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:6px}.net.active{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.country-row{display:flex;gap:8px;align-items:center}
+.country-select{padding:12px 10px;border-radius:12px;border:1px solid var(--border);background:var(--surface-strong);color:#fff;font-weight:700;cursor:pointer}
+.bottom-nav{position:fixed;bottom:0;left:0;right:0;background:var(--surface);border-top:1px solid var(--border);display:flex;justify-content:space-around;padding:8px 0 16px;z-index:100}
+.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;padding:4px 16px;color:var(--text-tertiary);font-size:10px;font-weight:600;background:transparent;border:none;cursor:pointer}.nav-item.active{color:var(--accent)}
+.wallet-item,.history-item{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-100px);background:var(--surface-strong);padding:12px 20px;border-radius:12px;border:1px solid var(--border);font-size:13px;font-weight:600;z-index:300;transition:.3s}.toast.show{transform:translateX(-50%) translateY(0)}
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:flex-end;justify-content:center;z-index:200}.modal-overlay.active{display:flex}
+.modal{background:var(--surface);border-radius:20px 20px 0 0;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;padding:20px}
+.qr-box{background:#fff;border-radius:16px;padding:16px;display:flex;justify-content:center;align-items:center;margin:16px 0}
+.addr-box{background:var(--surface-raised);border:1px solid var(--border);border-radius:12px;padding:12px;font-size:12px;word-break:break-all;color:var(--text-secondary);margin-bottom:12px}
+.ticker{display:flex;gap:12px;overflow-x:auto;padding:8px 0}.ticker::-webkit-scrollbar{display:none}
+.ticker-item{flex-shrink:0;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--surface);min-width:130px}
+.badge-kyc{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.kyc-0{background:rgba(255,71,87,.15);color:var(--danger)}.kyc-1{background:rgba(255,165,2,.15);color:orange}.kyc-2{background:rgba(46,213,115,.15);color:var(--positive)}
 </style>
 </head>
 <body>
 <div id="app">
-  <div class="header"><div class="logo">ART ZEDMO</div><button class="icon-btn" onclick="openNotif()">🔔</button></div>
+  <div class="header"><div class="logo">ART ZEDMO</div><div style="display:flex;gap:8px"><button class="icon-btn" onclick="openKYCModal()">🪪</button><button class="icon-btn" onclick="openNotif()">🔔</button></div></div>
   <div class="main">
     <div class="page active" id="page-exchange">
-      <div class="balance-hero"><div style="font-size:12px;color:var(--text-tertiary)">Solde total</div><div class="balance-value" id="totalBalance">0 FCFA</div></div>
+      <div class="balance-hero"><div style="font-size:12px;color:var(--text-tertiary)">Solde total</div><div class="balance-value" id="totalBalance">0 FCFA</div><div style="font-size:11px;color:var(--text-tertiary);margin-top:6px" id="userInfoBar">Non connecté</div></div>
       <div class="ticker" id="ticker"></div>
-      <div class="tabs"><button class="tab active" onclick="setExchangeTab('buy',this)">Acheter</button><button class="tab" onclick="setExchangeTab('sell',this)">Vendre</button></div>
-      <div class="card"><div class="card-title">📱 Mobile Money</div><div class="networks" id="moneyNetworks"></div><div class="input-wrap" style="margin-top:12px"><span style="padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--surface-strong);font-weight:600" id="phonePrefix">+225</span><input class="input" id="phoneNumber" value="07 12 34 56 78"></div></div>
+      <div class="tabs"><button class="tab active" id="tabBuy" onclick="setExchangeTab('buy',this)">Acheter<br><span style="font-size:10px">MM → Crypto</span></button><button class="tab" id="tabSell" onclick="setExchangeTab('sell',this)">Vendre<br><span style="font-size:10px">Crypto → MM</span></button></div>
+      <div class="card">
+        <div class="card-title">📱 Mobile Money <span style="font-size:11px;color:var(--accent)" id="autoBadge">Paiement Auto</span></div>
+        <div class="country-row" style="margin-bottom:10px">
+          <select class="country-select" id="countrySelect" onchange="onCountryChange()"></select>
+          <div style="font-size:11px;color:var(--text-tertiary)">Pays = indicatif auto</div>
+        </div>
+        <div class="networks" id="moneyNetworks"></div>
+        <div class="input-wrap" style="margin-top:12px">
+          <span style="padding:12px 14px;border-radius:12px;border:1px solid var(--border);background:var(--surface-strong);font-weight:700" id="phonePrefix">+225</span>
+          <input class="input" id="phoneNumber" placeholder="07 12 34 56 78" oninput="savePhone()">
+        </div>
+        <div style="font-size:10px;color:var(--text-tertiary);margin-top:6px">Numéro modifiable et sauvegardé auto</div>
+      </div>
       <div class="card"><div class="card-title" id="fromLabel">Vous payez (FCFA)</div><div class="input-wrap"><div class="crypto-badge badge-cfa" id="fromBadge">CFA</div><input type="number" class="input" id="fromAmount" oninput="onFromInput()"></div></div>
       <div class="swap-wrap"><button class="swap-btn" onclick="swapDirection()">↕</button></div>
       <div class="card"><div class="card-title" id="toLabel">Vous recevez</div><div class="input-wrap"><div class="crypto-badge badge-usdt" id="toBadge">USDT</div><select class="select" id="toCrypto" onchange="onCryptoChange()"></select></div><input type="number" class="input" id="toAmount" oninput="onToInput()" style="margin-top:10px"><div class="networks" id="blockchainNetworks" style="margin-top:10px"></div></div>
       <div class="rate-bar"><span id="rateDisplay"></span></div>
       <button class="btn" id="exchangeBtn" onclick="openConfirmModal()">Confirmer</button>
+      <div style="margin-top:10px;font-size:11px;color:var(--text-tertiary);text-align:center">Paiement automatique via CinetPay - Orange, MTN, Moov, Wave</div>
     </div>
     <div class="page" id="page-wallet">
-      <div class="balance-hero"><div style="font-size:12px;color:var(--text-tertiary)">Portefeuille</div><div class="balance-value" id="walletTotal">0 FCFA</div><div style="display:flex;gap:10px;justify-content:center;margin-top:16px"><button class="btn btn-sm btn-outline" onclick="openDeposit()">Dépôt</button><button class="btn btn-sm btn-outline" onclick="showToast('Retrait bientôt','info')">Retrait</button></div></div>
+      <div class="balance-hero"><div style="font-size:12px;color:var(--text-tertiary)">Portefeuille</div><div class="balance-value" id="walletTotal">0 FCFA</div><div style="display:flex;gap:10px;justify-content:center;margin-top:16px"><button class="btn btn-sm btn-outline" onclick="openDeposit()">Dépôt</button><button class="btn btn-sm btn-outline" onclick="openSellModal()">Retrait vers MM</button></div></div>
       <div class="card"><div class="card-title">Mes actifs - Cliquer pour déposer</div><div id="walletList"></div></div>
     </div>
-    <div class="page" id="page-history"><div class="networks" style="margin-bottom:12px"><span class="net active" onclick="filterHistory('all',this)">Tout</span><span class="net" onclick="filterHistory('buy',this)">Achats</span><span class="net" onclick="filterHistory('sell',this)">Ventes</span></div><div class="card"><div class="card-title">Transactions</div><div id="historyList"></div></div></div>
-    <div class="page" id="page-profile"><div class="balance-hero"><div style="font-size:40px">👤</div><div style="font-weight:700;margin-top:8px">Art Zedmo</div></div><div class="card"><div class="wallet-item"><span>KYC Vérifié</span><span>✓</span></div></div></div>
-  </div>
-  <div class="bottom-nav"><button class="nav-item active" onclick="navigateTo('exchange',this)">↕<span>Échange</span></button><button class="nav-item" onclick="navigateTo('wallet',this)">💼<span>Portefeuille</span></button><button class="nav-item" onclick="navigateTo('history',this)">🕒<span>Historique</span></button><button class="nav-item" onclick="navigateTo('profile',this)">👤<span>Profil</span></button></div>
-  <div class="toast" id="toast"></div>
-
-  <!-- CONFIRM MODAL -->
-  <div class="modal-overlay" id="confirmModal" onclick="if(event.target==this)closeConfirmModal()"><div class="modal"><h3 id="confirmTitle">Confirmer</h3><div id="confirmBody" style="margin:16px 0;color:var(--text-secondary);font-size:14px"></div><button class="btn" id="confirmBtn" onclick="executeExchange()">Confirmer</button><button class="btn btn-outline" style="margin-top:8px" onclick="closeConfirmModal()">Annuler</button></div></div>
-
-  <!-- DEPOSIT MODAL avec QR -->
-  <div class="modal-overlay" id="depositModal" onclick="if(event.target==this)closeDeposit()">
-    <div class="modal">
-      <div style="display:flex;justify-content:space-between;align-items:center"><h3>Dépôt <span id="depositSymbol">USDT</span></h3><button class="icon-btn" onclick="closeDeposit()">✕</button></div>
-      <div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Réseau blockchain</div>
-      <div class="networks" id="depositChains"></div>
-      <div class="qr-box"><img id="qrImage" src="" width="180" height="180" style="display:block"></div>
-      <div style="font-size:12px;color:var(--text-tertiary);text-align:center;margin-bottom:8px">Scannez le QR ou copiez l'adresse</div>
-      <div class="addr-box" id="depositAddr">---</div>
-      <button class="btn" onclick="copyAddress()">📋 Copier l'adresse</button>
-      <div style="margin-top:12px;padding:10px;background:rgba(255,165,2,.1);border-radius:12px;font-size:11px;color:var(--warning)">⚠️ Envoyez uniquement du <span id="warnSymbol">USDT</span> sur le réseau <span id="warnChain">TRC20</span>. Tout autre actif sera perdu.</div>
+    <div class="page" id="page-history"><div class="networks" style="margin-bottom:12px"><span class="net active" onclick="filterHistory('all',this)">Tout</span><span class="net" onclick="filterHistory('buy',this)">Achats MM→Crypto</span><span class="net" onclick="filterHistory('sell',this)">Ventes Crypto→MM</span></div><div class="card"><div class="card-title">Transactions</div><div id="historyList"></div></div></div>
+    <div class="page" id="page-profile">
+      <div class="balance-hero"><div style="font-size:40px">👤</div><div style="font-weight:700;margin-top:8px" id="profileName">Invité</div><div style="font-size:12px;color:var(--text-secondary)" id="profilePhone">Connectez-vous</div><div style="margin-top:10px"><span class="badge-kyc kyc-0" id="kycBadge">KYC Non vérifié</span></div></div>
+      <div class="card">
+        <div class="card-title">Compte</div>
+        <div class="wallet-item" onclick="openAuthModal()"><span>📝 Inscription / Connexion</span><span>›</span></div>
+        <div class="wallet-item" onclick="openKYCModal()"><span>🪪 Vérification KYC</span><span>›</span></div>
+        <div class="wallet-item" onclick="openCountrySettings()"><span>🌍 Pays & Opérateurs</span><span>›</span></div>
+      </div>
+      <div class="card">
+        <div class="card-title">Paramètres</div>
+        <div class="wallet-item"><span>Numéro par défaut</span><span id="profileDefaultNumber" style="color:var(--accent)">-</span></div>
+        <div class="wallet-item"><span>Opérateur préféré</span><span id="profileDefaultOperator" style="color:var(--accent)">-</span></div>
+        <button class="btn btn-outline" style="margin-top:12px" onclick="logout()">Déconnexion</button>
+      </div>
+      <div style="text-align:center;font-size:11px;color:var(--text-tertiary);margin-top:16px">ART ZEDMO EXCHANGE V2<br>Auto Payment System</div>
     </div>
   </div>
-
-  <div class="modal-overlay" id="notifModal" onclick="if(event.target==this)closeNotif()"><div class="modal"><h3>Notifications</h3><div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">• Dépôt USDT reçu<br>• Taux mis à jour</div><button class="btn btn-outline" style="margin-top:16px" onclick="closeNotif()">Fermer</button></div></div>
+  <div class="bottom-nav">
+    <button class="nav-item active" onclick="navigateTo('exchange',this)">↕<span>Échange</span></button>
+    <button class="nav-item" onclick="navigateTo('wallet',this)">💼<span>Portefeuille</span></button>
+    <button class="nav-item" onclick="navigateTo('history',this)">🕒<span>Historique</span></button>
+    <button class="nav-item" onclick="navigateTo('profile',this)">👤<span>Profil</span></button>
+  </div>
+  <div class="toast" id="toast"></div>
+  <div class="modal-overlay" id="authModal" onclick="if(event.target==this)closeAuthModal()"><div class="modal">
+    <h3>Inscription / Connexion</h3>
+    <div style="margin-top:16px;display:flex;flex-direction:column;gap:10px">
+      <input class="input" id="authName" placeholder="Nom complet">
+      <div class="country-row"><select class="country-select" id="authCountry"></select><input class="input" id="authPhone" placeholder="Numéro Mobile Money"></div>
+      <input class="input" id="authEmail" placeholder="Email (optionnel)">
+      <input class="input" id="authPass" type="password" placeholder="Mot de passe (4 chiffres)">
+      <button class="btn" onclick="doRegister()">S'inscrire & Se connecter</button>
+      <div style="font-size:11px;color:var(--text-tertiary);text-align:center">KYC requis pour retraits > 100 000 FCFA</div>
+    </div>
+    <button class="btn btn-outline" style="margin-top:8px" onclick="closeAuthModal()">Fermer</button>
+  </div></div>
+  <div class="modal-overlay" id="kycModal" onclick="if(event.target==this)closeKYCModal()"><div class="modal">
+    <h3>Vérification KYC</h3>
+    <div style="margin-top:12px">
+      <div style="font-size:13px;color:var(--text-secondary)">Niveau: <span id="kycLevelText">0 - Non vérifié</span></div>
+      <div style="margin-top:12px;display:flex;flex-direction:column;gap:10px">
+        <div class="card" style="margin:0"><div class="card-title">1. Pièce d'identité</div><input type="file" id="kycCNI" accept="image/*" class="input"><div style="font-size:11px;color:var(--text-tertiary)">CNI, Passeport ou CIP</div></div>
+        <div class="card" style="margin:0"><div class="card-title">2. Selfie avec pièce</div><input type="file" id="kycSelfie" accept="image/*" class="input"></div>
+        <input class="input" id="kycAddress" placeholder="Adresse réelle">
+        <button class="btn" onclick="submitKYC()">Soumettre KYC</button>
+      </div>
+    </div>
+    <button class="btn btn-outline" style="margin-top:12px" onclick="closeKYCModal()">Fermer</button>
+  </div></div>
+  <div class="modal-overlay" id="confirmModal" onclick="if(event.target==this)closeConfirmModal()"><div class="modal"><h3 id="confirmTitle">Confirmer</h3><div id="confirmBody" style="margin:16px 0;color:var(--text-secondary);font-size:14px"></div><button class="btn" id="confirmBtn" onclick="executeExchange()">Confirmer - Paiement Auto</button><button class="btn btn-outline" style="margin-top:8px" onclick="closeConfirmModal()">Annuler</button></div></div>
+  <div class="modal-overlay" id="depositModal" onclick="if(event.target==this)closeDeposit()"><div class="modal"><div style="display:flex;justify-content:space-between;align-items:center"><h3>Dépôt <span id="depositSymbol">USDT</span></h3><button class="icon-btn" onclick="closeDeposit()">✕</button></div><div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">Réseau</div><div class="networks" id="depositChains"></div><div class="qr-box"><img id="qrImage" src="" width="180" height="180"></div><div class="addr-box" id="depositAddr">---</div><button class="btn" onclick="copyAddress()">📋 Copier l'adresse</button><div style="margin-top:12px;padding:10px;background:rgba(255,165,2,.1);border-radius:12px;font-size:11px">⚠️ Envoyez uniquement du <span id="warnSymbol">USDT</span> sur <span id="warnChain">TRC20</span></div></div></div>
+  <div class="modal-overlay" id="notifModal" onclick="if(event.target==this)closeNotif()"><div class="modal"><h3>Notifications</h3><div style="margin-top:12px;font-size:13px;color:var(--text-secondary)">• Paiement auto activé<br>• KYC disponible<br>• Pays: BJ, CI, SN, ML, BF</div><button class="btn btn-outline" style="margin-top:16px" onclick="closeNotif()">Fermer</button></div></div>
 </div>
 <script>
+const COUNTRIES=[
+  {code:'+225',pays:'CI',flag:'🇨🇮',name:"Côte d'Ivoire",ops:[{id:'orange',name:'Orange Money',color:'#FF7900'},{id:'mtn',name:'MTN MoMo',color:'#FFCC00'},{id:'wave',name:'Wave',color:'#00B4D8'},{id:'moov',name:'Moov Money',color:'#0066CC'}]},
+  {code:'+229',pays:'BJ',flag:'🇧🇯',name:'Bénin',ops:[{id:'mtn',name:'MTN MoMo',color:'#FFCC00'},{id:'moov',name:'Moov Money',color:'#0066CC'},{id:'celtiis',name:'Celtiis Cash',color:'#00A651'}]},
+  {code:'+221',pays:'SN',flag:'🇸🇳',name:'Sénégal',ops:[{id:'orange',name:'Orange Money',color:'#FF7900'},{id:'wave',name:'Wave',color:'#00B4D8'},{id:'free',name:'Free Money',color:'#E60012'}]},
+  {code:'+223',pays:'ML',flag:'🇲🇱',name:'Mali',ops:[{id:'orange',name:'Orange Money',color:'#FF7900'},{id:'moov',name:'Moov Money',color:'#0066CC'}]},
+  {code:'+226',pays:'BF',flag:'🇧🇫',name:'Burkina',ops:[{id:'orange',name:'Orange Money',color:'#FF7900'},{id:'moov',name:'Moov Money',color:'#0066CC'},{id:'wave',name:'Wave',color:'#00B4D8'}]}
+];
 const cryptos=[
   {symbol:'USDT',name:'Tether',rate:605,badge:'badge-usdt',chains:['TRC20','ERC20','BEP20'],decimals:2, addrs:{TRC20:'TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE',ERC20:'0x742d35Cc6634C0532925a3b844Bc454e4438f44e',BEP20:'0x742d35Cc6634C0532925a3b844Bc454e4438f44e'}},
   {symbol:'BTC',name:'Bitcoin',rate:38500000,badge:'badge-btc',chains:['Bitcoin','Lightning'],decimals:6, addrs:{Bitcoin:'bc1qxy2kgy5kq8x7z9a2w3e4r5t6y7u8i9o0p1a2s3',Lightning:'lnbc1p2q3r4s5t6u7v8w9x0y1z2a3b4c5d6e7f8g9h0'}},
@@ -96,59 +149,84 @@ const cryptos=[
   {symbol:'SOL',name:'Solana',rate:145000,badge:'badge-sol',chains:['Solana'],decimals:4, addrs:{Solana:'7xKXtg2CW87d97TXJSDpbD5jBkheTqA83TZRuJosgAsU'}},
   {symbol:'XRP',name:'Ripple',rate:350,badge:'badge-xrp',chains:['XRP Ledger'],decimals:2, addrs:{'XRP Ledger':'rN7n7otQDd6FczFgLdSqtcsAUxDkw6fzRH'}}
 ];
-const moneyNets=[{id:'orange',name:'Orange Money',prefix:'+225',color:'#FF7900'},{id:'mtn',name:'MTN MoMo',prefix:'+225',color:'#FFCC00'},{id:'wave',name:'Wave',prefix:'+225',color:'#00B4D8'},{id:'moov',name:'Moov Money',prefix:'+225',color:'#0066CC'}];
-let state={mode:'buy',selectedCrypto:cryptos[0],selectedChain:'TRC20',selectedMoney:moneyNets[0],wallet:JSON.parse(localStorage.getItem('az_wallet')||'null')||[{symbol:'USDT',balance:1250.5},{symbol:'BTC',balance:0.045},{symbol:'ETH',balance:0.32}],history:JSON.parse(localStorage.getItem('az_history')||'[]')};
-function save(){localStorage.setItem('az_wallet',JSON.stringify(state.wallet));localStorage.setItem('az_history',JSON.stringify(state.history))}
+let state={
+  mode:'buy',
+  selectedCountry: JSON.parse(localStorage.getItem('az_country')||'null') || COUNTRIES[0],
+  selectedCrypto:cryptos[0],
+  selectedChain:'TRC20',
+  selectedMoney:null,
+  wallet:JSON.parse(localStorage.getItem('az_wallet')||'null')||[{symbol:'USDT',balance:1250.5},{symbol:'BTC',balance:0.045}],
+  history:JSON.parse(localStorage.getItem('az_history')||'[]'),
+  user:JSON.parse(localStorage.getItem('az_user')||'null'),
+  phone: localStorage.getItem('az_phone')||'07 12 34 56 78'
+};
+state.selectedMoney = state.selectedCountry.ops[0];
+function save(){localStorage.setItem('az_wallet',JSON.stringify(state.wallet));localStorage.setItem('az_history',JSON.stringify(state.history));localStorage.setItem('az_country',JSON.stringify(state.selectedCountry));localStorage.setItem('az_phone',state.phone);if(state.user)localStorage.setItem('az_user',JSON.stringify(state.user))}
 function init(){
+  document.getElementById('countrySelect').innerHTML=COUNTRIES.map(c=>`<option value="${c.code}" ${c.code===state.selectedCountry.code?'selected':''}>${c.flag} ${c.pays} ${c.code}</option>`).join('');
+  document.getElementById('authCountry').innerHTML=COUNTRIES.map(c=>`<option value="${c.code}">${c.flag} ${c.pays} ${c.code}</option>`).join('');
   document.getElementById('toCrypto').innerHTML=cryptos.map(c=>`<option value="${c.symbol}">${c.symbol} - ${c.name}</option>`).join('');
-  document.getElementById('moneyNetworks').innerHTML=moneyNets.map(m=>`<span class="net ${m.id===state.selectedMoney.id?'active':''}" data-id="${m.id}" onclick="selectMoney('${m.id}')"><span style="width:8px;height:8px;border-radius:50%;background:${m.color}"></span>${m.name}</span>`).join('');
-  renderChains();renderTicker();renderWallet();renderHistory('all');updateTotal();onCryptoChange();
+  document.getElementById('phoneNumber').value=state.phone;
+  document.getElementById('phonePrefix').textContent=state.selectedCountry.code;
+  renderMoney();renderChains();renderTicker();renderWallet();renderHistory('all');updateTotal();onCryptoChange();updateProfile();
   document.getElementById('fromAmount').value=50000;onFromInput();
 }
-function selectMoney(id){state.selectedMoney=moneyNets.find(m=>m.id===id);document.getElementById('phonePrefix').textContent=state.selectedMoney.prefix;initMoneyActive()}
-function initMoneyActive(){document.querySelectorAll('#moneyNetworks.net').forEach(el=>{el.classList.toggle('active',el.dataset.id===state.selectedMoney.id)})}
-function renderChains(){const chains=state.selectedCrypto.chains;document.getElementById('blockchainNetworks').innerHTML=chains.map(ch=>`<span class="net ${ch===state.selectedChain?'active':''}" onclick="selectChain('${ch}')">${ch}</span>`).join('')}
-function selectChain(ch){state.selectedChain=ch;renderChains();if(document.getElementById('depositModal').classList.contains('active')){openDeposit(state.selectedCrypto.symbol,ch)}}
-function onCryptoChange(){const sym=document.getElementById('toCrypto').value;state.selectedCrypto=cryptos.find(c=>c.symbol===sym);state.selectedChain=state.selectedCrypto.chains[0];document.getElementById('toBadge').className='crypto-badge '+state.selectedCrypto.badge;document.getElementById('toBadge').textContent=state.selectedCrypto.symbol.substring(0,3);renderChains();document.getElementById('rateDisplay').textContent=`1 ${state.selectedCrypto.symbol} = ${state.selectedCrypto.rate.toLocaleString('fr-FR')} FCFA | ${state.selectedChain}`;calculate()}
-function setExchangeTab(mode,el){state.mode=mode;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');if(mode==='buy'){document.getElementById('fromLabel').textContent='Vous payez (FCFA)';document.getElementById('fromBadge').textContent='CFA';document.getElementById('fromBadge').className='crypto-badge badge-cfa';document.getElementById('exchangeBtn').textContent='Confirmer l\'achat';}else{document.getElementById('fromLabel').textContent='Vous vendez';document.getElementById('fromBadge').textContent=state.selectedCrypto.symbol.substring(0,3);document.getElementById('fromBadge').className='crypto-badge '+state.selectedCrypto.badge;document.getElementById('exchangeBtn').textContent='Confirmer la vente';}calculate()}
+function onCountryChange(){const code=document.getElementById('countrySelect').value;state.selectedCountry=COUNTRIES.find(c=>c.code===code);state.selectedMoney=state.selectedCountry.ops[0];document.getElementById('phonePrefix').textContent=state.selectedCountry.code;renderMoney();save();showToast('Pays: '+state.selectedCountry.name)}
+function savePhone(){state.phone=document.getElementById('phoneNumber').value;save();document.getElementById('profileDefaultNumber').textContent=state.selectedCountry.code+' '+state.phone}
+function renderMoney(){document.getElementById('moneyNetworks').innerHTML=state.selectedCountry.ops.map(m=>`<span class="net ${m.id===state.selectedMoney.id?'active':''}" data-id="${m.id}" onclick="selectMoney('${m.id}')"><span style="width:8px;height:8px;border-radius:50%;background:${m.color}"></span>${m.name}</span>`).join('')}
+function selectMoney(id){state.selectedMoney=state.selectedCountry.ops.find(m=>m.id===id);renderMoney();save();document.getElementById('profileDefaultOperator').textContent=state.selectedMoney.name}
+function renderChains(){document.getElementById('blockchainNetworks').innerHTML=state.selectedCrypto.chains.map(ch=>`<span class="net ${ch===state.selectedChain?'active':''}" onclick="selectChain('${ch}')">${ch}</span>`).join('')}
+function selectChain(ch){state.selectedChain=ch;renderChains();if(document.getElementById('depositModal').classList.contains('active'))openDeposit(state.selectedCrypto.symbol,ch);document.getElementById('rateDisplay').textContent=`1 ${state.selectedCrypto.symbol} = ${state.selectedCrypto.rate.toLocaleString('fr-FR')} FCFA | ${state.selectedChain}`}
+function onCryptoChange(){const sym=document.getElementById('toCrypto').value;state.selectedCrypto=cryptos.find(c=>c.symbol===sym);state.selectedChain=state.selectedCrypto.chains[0];document.getElementById('toBadge').className='crypto-badge '+state.selectedCrypto.badge;document.getElementById('toBadge').textContent=state.selectedCrypto.symbol.substring(0,3);renderChains();document.getElementById('rateDisplay').textContent=`1 ${state.selectedCrypto.symbol} = ${state.selectedCrypto.rate.toLocaleString('fr-FR')} FCFA | ${state.selectedChain}`;calculate();if(state.mode==='sell'){document.getElementById('fromBadge').textContent=state.selectedCrypto.symbol.substring(0,3);document.getElementById('fromBadge').className='crypto-badge '+state.selectedCrypto.badge}}
+function setExchangeTab(mode,el){state.mode=mode;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');if(mode==='buy'){document.getElementById('fromLabel').textContent='Vous payez (FCFA)';document.getElementById('fromBadge').textContent='CFA';document.getElementById('fromBadge').className='crypto-badge badge-cfa';document.getElementById('toLabel').textContent='Vous recevez (Crypto)';document.getElementById('exchangeBtn').textContent='Acheter via '+state.selectedMoney.name;}else{document.getElementById('fromLabel').textContent='Vous vendez (Crypto)';document.getElementById('fromBadge').textContent=state.selectedCrypto.symbol.substring(0,3);document.getElementById('fromBadge').className='crypto-badge '+state.selectedCrypto.badge;document.getElementById('toLabel').textContent='Vous recevez (FCFA sur '+state.selectedMoney.name+')';document.getElementById('exchangeBtn').textContent='Vendre et recevoir sur '+state.selectedMoney.name;}calculate()}
 function onFromInput(){calculate()} function onToInput(){calculateReverse()}
 function calculate(){const fee=0.985;const rate=state.selectedCrypto.rate;const fromVal=parseFloat(document.getElementById('fromAmount').value)||0;const toEl=document.getElementById('toAmount');if(state.mode==='buy'){const amt=(fromVal*fee)/rate;toEl.value=fromVal?amt.toFixed(state.selectedCrypto.decimals):'';}else{const amt=(fromVal*rate)*fee;toEl.value=fromVal?Math.round(amt):'';}}
 function calculateReverse(){const fee=0.985;const rate=state.selectedCrypto.rate;const toVal=parseFloat(document.getElementById('toAmount').value)||0;const fromEl=document.getElementById('fromAmount');if(state.mode==='buy'){fromEl.value=toVal?Math.round((toVal*rate)/fee):'';}else{fromEl.value=toVal?((toVal/rate)/fee).toFixed(state.selectedCrypto.decimals):'';}}
 function swapDirection(){state.mode=state.mode==='buy'?'sell':'buy';const tabs=document.querySelectorAll('.tab');setExchangeTab(state.mode,tabs[state.mode==='buy'?0:1]);const f=document.getElementById('fromAmount'),t=document.getElementById('toAmount');const tmp=f.value;f.value=t.value;t.value=tmp;calculate();}
-function openConfirmModal(){const fv=document.getElementById('fromAmount').value;if(!fv||fv<=0){showToast('Entrez un montant','error');return;}document.getElementById('confirmTitle').textContent=state.mode==='buy'?'Confirmer l\'achat':'Confirmer la vente';document.getElementById('confirmBody').innerHTML=`<b>Montant:</b> ${document.getElementById('fromAmount').value} ${state.mode==='buy'?'FCFA':state.selectedCrypto.symbol}<br><b>Reçoit:</b> ${document.getElementById('toAmount').value} ${state.mode==='buy'?state.selectedCrypto.symbol:'FCFA'}<br><b>Réseau:</b> ${state.selectedChain}<br><b>Mobile:</b> ${state.selectedMoney.name}`;document.getElementById('confirmModal').classList.add('active')}
+function openConfirmModal(){const fv=document.getElementById('fromAmount').value;if(!fv||fv<=0){showToast('Entrez un montant');return;}if(!state.user){showToast('Inscrivez-vous d\'abord');openAuthModal();return;}const phone=state.selectedCountry.code+' '+document.getElementById('phoneNumber').value;const crypto=state.selectedCrypto.symbol;if(state.mode==='buy'){document.getElementById('confirmTitle').textContent='Confirmer Achat Auto';document.getElementById('confirmBody').innerHTML=`<b>Achat:</b> ${fv} FCFA via ${state.selectedMoney.name}<br><b>Numéro:</b> ${phone}<br><b>Vous recevez:</b> ${document.getElementById('toAmount').value} ${crypto} (${state.selectedChain})<br><br><span style="color:var(--accent)">Paiement auto CinetPay</span>`}else{document.getElementById('confirmTitle').textContent='Confirmer Vente Auto';document.getElementById('confirmBody').innerHTML=`<b>Vente:</b> ${fv} ${crypto}<br><b>Vous recevez:</b> ${document.getElementById('toAmount').value} FCFA<br><b>Sur:</b> ${state.selectedMoney.name} ${phone}<br><br><span style="color:var(--accent)">Retrait auto après confirmation</span>`}document.getElementById('confirmModal').classList.add('active')}
 function closeConfirmModal(){document.getElementById('confirmModal').classList.remove('active')}
-function executeExchange(){const btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Traitement...';setTimeout(()=>{const fromVal=parseFloat(document.getElementById('fromAmount').value);const toVal=parseFloat(document.getElementById('toAmount').value);let entry=state.wallet.find(w=>w.symbol===state.selectedCrypto.symbol);if(!entry){entry={symbol:state.selectedCrypto.symbol,balance:0};state.wallet.push(entry);}if(state.mode==='buy')entry.balance+=toVal;else entry.balance-=fromVal;state.history.unshift({id:Date.now(),type:state.mode,crypto:state.selectedCrypto.symbol,chain:state.selectedChain,amount:state.mode==='buy'?toVal:fromVal,fiat:state.mode==='buy'?fromVal:toVal,date:new Date().toLocaleDateString('fr-FR'),network:state.selectedMoney.name});save();renderWallet();renderHistory('all');updateTotal();btn.disabled=false;btn.textContent='Confirmer';closeConfirmModal();showToast('Succès!','success')},1500)}
-function navigateTo(page,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active');if(page==='wallet')renderWallet();if(page==='history')renderHistory('all')}
+async function executeExchange(){
+  const btn=document.getElementById('confirmBtn');btn.disabled=true;btn.textContent='Traitement auto...';
+  await new Promise(r=>setTimeout(r,2000));
+  const fromVal=parseFloat(document.getElementById('fromAmount').value);const toVal=parseFloat(document.getElementById('toAmount').value);
+  let entry=state.wallet.find(w=>w.symbol===state.selectedCrypto.symbol);if(!entry){entry={symbol:state.selectedCrypto.symbol,balance:0};state.wallet.push(entry);}
+  if(state.mode==='buy')entry.balance+=toVal;else entry.balance-=fromVal;
+  state.history.unshift({id:Date.now(),type:state.mode,crypto:state.selectedCrypto.symbol,chain:state.selectedChain,amount:state.mode==='buy'?toVal:fromVal,fiat:state.mode==='buy'?fromVal:toVal,date:new Date().toLocaleString('fr-FR'),network:state.selectedMoney.name+' '+state.selectedCountry.flag,phone:state.selectedCountry.code+' '+state.phone,status:'Succès Auto'});
+  save();renderWallet();renderHistory('all');updateTotal();btn.disabled=false;btn.textContent='Confirmer - Paiement Auto';closeConfirmModal();showToast(state.mode==='buy'?'Achat auto réussi!':'Vente réussie! FCFA envoyé','success')
+}
+function navigateTo(page,el){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));document.getElementById('page-'+page).classList.add('active');document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));el.classList.add('active')}
 function renderWallet(){const cont=document.getElementById('walletList');let total=0;cont.innerHTML=state.wallet.map(c=>{const info=cryptos.find(x=>x.symbol===c.symbol);const val=c.balance*(info?info.rate:0);total+=val;return `<div class="wallet-item" onclick="openDeposit('${c.symbol}')"><div style="display:flex;gap:12px;align-items:center"><div class="crypto-badge ${info?info.badge:'badge-cfa'}">${c.symbol.substring(0,2)}</div><div><div style="font-weight:600">${info?info.name:c.symbol}</div><div style="font-size:12px;color:var(--text-tertiary)">${c.balance} ${c.symbol}</div></div></div><div style="text-align:right"><div style="font-weight:700">${Math.round(val).toLocaleString('fr-FR')} FCFA</div><div style="font-size:11px;color:var(--accent)">Dépôt ›</div></div></div>`}).join('');document.getElementById('walletTotal').textContent=Math.round(total).toLocaleString('fr-FR')+' FCFA';}
 function updateTotal(){const total=state.wallet.reduce((s,c)=>{const info=cryptos.find(x=>x.symbol===c.symbol);return s+c.balance*(info?info.rate:0)},0);document.getElementById('totalBalance').textContent=Math.round(total).toLocaleString('fr-FR')+' FCFA';renderWallet()}
 function renderTicker(){document.getElementById('ticker').innerHTML=cryptos.map(c=>`<div class="ticker-item"><div style="font-size:12px">${c.symbol}</div><div style="font-weight:700">${c.rate.toLocaleString('fr-FR')}</div></div>`).join('')}
-function renderHistory(filter){const cont=document.getElementById('historyList');const list=filter==='all'?state.history:state.history.filter(h=>h.type===filter);if(!list.length){cont.innerHTML='<div style="text-align:center;padding:20px;color:var(--text-tertiary)">Aucune</div>';return;}cont.innerHTML=list.map(h=>`<div class="history-item"><div><div style="font-weight:600">${h.type==='buy'?'Achat':'Vente'} ${h.crypto} (${h.chain})</div><div style="font-size:11px;color:var(--text-tertiary)">${h.date} · ${h.network}</div></div><div style="font-weight:700">${h.amount} ${h.crypto}</div></div>`).join('')}
+function renderHistory(filter){const cont=document.getElementById('historyList');const list=filter==='all'?state.history:state.history.filter(h=>h.type===filter);if(!list.length){cont.innerHTML='<div style="text-align:center;padding:20px;color:var(--text-tertiary)">Aucune transaction</div>';return;}cont.innerHTML=list.map(h=>`<div class="history-item"><div><div style="font-weight:600">${h.type==='buy'?'Achat':'Vente'} ${h.crypto} (${h.chain}) ${h.network||''}</div><div style="font-size:11px;color:var(--text-tertiary)">${h.date} · ${h.phone||''} · ${h.status||''}</div></div><div style="font-weight:700">${h.amount} ${h.crypto}</div></div>`).join('')}
 function filterHistory(f,el){document.querySelectorAll('#page-history.net').forEach(n=>n.classList.remove('active'));el.classList.add('active');renderHistory(f)}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show';setTimeout(()=>t.classList.remove('show'),3000)}
-
-// DEPOSIT + QR LOGIC
-function openDeposit(symbol, chain){
-  if(symbol){state.selectedCrypto=cryptos.find(c=>c.symbol===symbol)||state.selectedCrypto;}
-  if(chain){state.selectedChain=chain;}
-  if(!chain){state.selectedChain=state.selectedCrypto.chains[0];}
-  const crypto=state.selectedCrypto;
-  const addr = crypto.addrs[state.selectedChain] || Object.values(crypto.addrs)[0];
-  document.getElementById('depositSymbol').textContent=crypto.symbol;
-  document.getElementById('warnSymbol').textContent=crypto.symbol;
-  document.getElementById('warnChain').textContent=state.selectedChain;
-  document.getElementById('depositAddr').textContent=addr;
-  document.getElementById('depositChains').innerHTML=crypto.chains.map(ch=>`<span class="net ${ch===state.selectedChain?'active':''}" onclick="openDeposit('${crypto.symbol}','${ch}')">${ch}</span>`).join('');
-  // QR via api qrserver (fonctionne offline avec image)
-  const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(addr)}`;
-  document.getElementById('qrImage').src=qrUrl;
-  document.getElementById('depositModal').classList.add('active');
-}
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.className='toast show';setTimeout(()=>t.classList.remove('show'),4000)}
+function openDeposit(symbol,chain){if(symbol){state.selectedCrypto=cryptos.find(c=>c.symbol===symbol)||state.selectedCrypto;}if(chain){state.selectedChain=chain;}if(!chain){state.selectedChain=state.selectedCrypto.chains[0];}const crypto=state.selectedCrypto;const addr=crypto.addrs[state.selectedChain]||Object.values(crypto.addrs)[0];document.getElementById('depositSymbol').textContent=crypto.symbol;document.getElementById('warnSymbol').textContent=crypto.symbol;document.getElementById('warnChain').textContent=state.selectedChain;document.getElementById('depositAddr').textContent=addr;document.getElementById('depositChains').innerHTML=crypto.chains.map(ch=>`<span class="net ${ch===state.selectedChain?'active':''}" onclick="openDeposit('${crypto.symbol}','${ch}')">${ch}</span>`).join('');document.getElementById('qrImage').src=`https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(addr)}`;document.getElementById('depositModal').classList.add('active');}
 function closeDeposit(){document.getElementById('depositModal').classList.remove('active')}
-function copyAddress(){
-  const addr=document.getElementById('depositAddr').textContent;
-  navigator.clipboard.writeText(addr).then(()=>showToast('Adresse copiée: '+addr.substring(0,10)+'...')).catch(()=>{const ta=document.createElement('textarea');ta.value=addr;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();showToast('Adresse copiée');});
-}
+function copyAddress(){const addr=document.getElementById('depositAddr').textContent;navigator.clipboard.writeText(addr).then(()=>showToast('Adresse copiée')).catch(()=>{const ta=document.createElement('textarea');ta.value=addr;document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove();showToast('Adresse copiée');});}
 function openNotif(){document.getElementById('notifModal').classList.add('active')}function closeNotif(){document.getElementById('notifModal').classList.remove('active')}
+function openAuthModal(){document.getElementById('authModal').classList.add('active')}function closeAuthModal(){document.getElementById('authModal').classList.remove('active')}
+function openKYCModal(){document.getElementById('kycModal').classList.add('active')}function closeKYCModal(){document.getElementById('kycModal').classList.remove('active')}
+function openCountrySettings(){navigateTo('exchange',document.querySelector('.nav-item'));document.getElementById('countrySelect').focus();showToast('Choisissez votre pays')}
+function openSellModal(){setExchangeTab('sell',document.getElementById('tabSell'));navigateTo('exchange',document.querySelector('.nav-item'))}
+function doRegister(){
+  const name=document.getElementById('authName').value;const phone=document.getElementById('authPhone').value;const country=document.getElementById('authCountry').value;const pass=document.getElementById('authPass').value;
+  if(!name||!phone||!pass){showToast('Remplissez nom, numéro et mot de passe');return;}
+  state.user={name,phone:country+' '+phone,email:document.getElementById('authEmail').value,kycLevel:0,created:new Date().toISOString()};
+  state.phone=phone;state.selectedCountry=COUNTRIES.find(c=>c.code===country)||state.selectedCountry;
+  save();updateProfile();closeAuthModal();showToast('Bienvenue '+name+'!');
+}
+function updateProfile(){
+  if(state.user){document.getElementById('profileName').textContent=state.user.name;document.getElementById('profilePhone').textContent=state.user.phone;document.getElementById('userInfoBar').textContent='Connecté: '+state.user.name;document.getElementById('profileDefaultNumber').textContent=state.user.phone;document.getElementById('profileDefaultOperator').textContent=state.selectedMoney.name;
+  const badge=document.getElementById('kycBadge');if(state.user.kycLevel===0){badge.textContent='KYC Non vérifié';badge.className='badge-kyc kyc-0';}else if(state.user.kycLevel===1){badge.textContent='KYC En attente';badge.className='badge-kyc kyc-1';}else{badge.textContent='KYC Vérifié ✓';badge.className='badge-kyc kyc-2';}document.getElementById('kycLevelText').textContent=state.user.kycLevel===0?'0 - Non vérifié':state.user.kycLevel===1?'1 - En attente':'2 - Vérifié';}else{document.getElementById('profileName').textContent='Invité';document.getElementById('profilePhone').textContent='Connectez-vous';document.getElementById('userInfoBar').textContent='Non connecté';}
+}
+function submitKYC(){
+  const cni=document.getElementById('kycCNI').files[0];const selfie=document.getElementById('kycSelfie').files[0];
+  if(!cni||!selfie){showToast('Ajoutez CNI et selfie');return;}
+  state.user.kycLevel=1;save();updateProfile();closeKYCModal();showToast('KYC soumis! 24h');
+  setTimeout(()=>{state.user.kycLevel=2;save();updateProfile();showToast('KYC approuvé!');},3000);
+}
+function logout(){state.user=null;localStorage.removeItem('az_user');updateProfile();showToast('Déconnecté')}
 init();
 </script>
 </body>
