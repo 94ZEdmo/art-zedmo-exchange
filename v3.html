@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ART ZEDMO V3 PRO</title>
+<style>*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}body{background:#0a0f0e;color:#fff}header{padding:16px;display:flex;justify-content:space-between;border-bottom:1px solid #1a2a27}.logo{color:#00e5a0;font-weight:800;letter-spacing:2px}.btn-small{padding:8px 14px;border-radius:20px;border:1px solid #00e5a0;background:transparent;color:#00e5a0;cursor:pointer}.container{max-width:480px;margin:0 auto;padding:16px;padding-bottom:100px}.card{background:#121c1a;border:1px solid #1e332f;border-radius:20px;padding:18px;margin-bottom:16px}.tabs{display:flex;background:#1a2825;border-radius:30px;padding:4px;margin:16px 0}.tab{flex:1;padding:12px;text-align:center;border-radius:24px;cursor:pointer;font-weight:600}.tab.active{background:#00e5a0;color:#000}.pay-btn{padding:10px 16px;border-radius:24px;border:1px solid #2a413d;background:#1a2825;color:#fff;cursor:pointer;margin:4px}.pay-btn.active{background:#00e5a0;color:#000;font-weight:700}.input{background:#1a2825;border:1px solid #2a413d;border-radius:14px;padding:14px;color:#fff;width:100%;outline:none}.main-btn{width:100%;background:#00e5a0;color:#000;padding:16px;border:none;border-radius:30px;font-weight:800;font-size:16px;cursor:pointer;margin-top:18px}.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:100;padding:20px}.modal.show{display:flex}.modal-box{background:#121c1a;border:1px solid #2a413d;border-radius:20px;padding:22px;width:100%;max-width:420px}</style>
+</head>
+<body>
+<header><div class="logo">ART ZEDMO</div><div><button class="btn-small" onclick="openM('auth')">Inscription</button> <button class="btn-small" id="kycBtn" onclick="openM('kyc')">KYC</button></div></header>
+<div class="container">
+<div class="card"><div style="text-align:center;color:#7a9a95;font-size:13px">Solde total estimé</div><div style="text-align:center;font-size:30px;font-weight:800;margin:6px 0">3 161 053 FCFA</div></div>
+<div class="tabs"><div class="tab active" id="tBuy" onclick="setMode('buy')">Acheter Crypto</div><div class="tab" id="tSell" onclick="setMode('sell')">Vendre Crypto</div></div>
+<div class="card">
+<div style="font-size:13px;color:#8ab0aa">Mode de paiement - Cliquez pour choisir</div>
+<div style="margin:10px 0"><button class="pay-btn active" onclick="selPay(this)">Orange Money</button><button class="pay-btn" onclick="selPay(this)">MTN MoMo</button><button class="pay-btn" onclick="selPay(this)">Wave</button><button class="pay-btn" onclick="selPay(this)">Moov Money</button></div>
+<div style="display:flex;gap:8px;margin:12px 0"><select id="cc" class="input" style="width:110px"><option value="+229">🇧🇯 +229</option><option value="+225">🇨🇮 +225</option><option value="+221">🇸🇳 +221</option><option value="+226">🇧🇫 +226</option><option value="+223">🇲🇱 +223</option><option value="+228">🇹🇬 +228</option><option value="+237">🇨🇲 +237</option></select><input id="phone" class="input" value="01 96 58 73 03"></div>
+<div><label style="font-size:12px;color:#8ab0aa">Vous payez (FCFA)</label><input id="f" class="input" type="number" value="50000" oninput="calc()"></div>
+<div style="text-align:center;margin:12px;font-size:20px;cursor:pointer" onclick="toggleM()">↕️</div>
+<div><label style="font-size:12px;color:#8ab0aa">Vous recevez</label><div style="display:flex;gap:8px"><select id="cr" class="input" style="width:110px" onchange="calc()"><option>USDT</option><option>BTC</option><option>ETH</option></select><input id="c" class="input" value="82.64" oninput="calcR()"></div></div>
+<div id="box" style="background:#00e5a0;color:#000;padding:12px;border-radius:12px;margin-top:12px;display:none"></div>
+<button class="main-btn" id="mainBtn" onclick="pay()">Acheter - Paiement Auto</button>
+<div style="font-size:11px;color:#5a7a75;text-align:center;margin-top:10px">Paiement auto vers +229 01 96 58 73 03 • Reçu SMS instantané</div>
+</div>
+</div>
+
+<div class="modal" id="auth"><div class="modal-box"><h3>Inscription & Connexion</h3><input id="n" class="input" placeholder="Nom complet" style="margin:8px 0"><input id="e" class="input" placeholder="Email" style="margin:8px 0"><input class="input" value="+229 01 96 58 73 03" placeholder="Téléphone modifiable" style="margin:8px 0"><input class="input" type="password" placeholder="Mot de passe" style="margin:8px 0"><button class="main-btn" onclick="localStorage.setItem('user',document.getElementById('n').value);closeM('auth');alert('Bienvenue!')">S'inscrire</button><button class="btn-small" style="width:100%;margin-top:8px" onclick="closeM('auth')">Fermer</button></div></div>
+<div class="modal" id="kyc"><div class="modal-box"><h3>Vérification KYC</h3><p style="font-size:12px;color:#8ab0aa">Obligatoire pour paiement automatique</p><select class="input" style="margin:8px 0"><option>CNI</option><option>Passeport</option></select><input class="input" placeholder="Numéro pièce" style="margin:8px 0"><input type="file" class="input" style="margin:8px 0"><label style="font-size:12px"><input type="checkbox" id="chk"> J'atteste infos vraies</label><button class="main-btn" onclick="if(!document.getElementById('chk').checked){alert('Coche la case')}else{localStorage.setItem('kyc','ok');document.getElementById('kycBtn').innerText='KYC Vérifié';closeM('kyc');alert('KYC Validé! Paiement auto activé')}">Envoyer KYC</button></div></div>
+
+<script>
+let mode='buy', rates={USDT:605,BTC:38500000,ETH:2100000};
+let selPayM='Orange Money';
+function openM(id){document.getElementById(id).classList.add('show')}
+function closeM(id){document.getElementById(id).classList.remove('show')}
+function setMode(m){mode=m;document.getElementById('tBuy').classList.toggle('active',m=='buy');document.getElementById('tSell').classList.toggle('active',m=='sell');document.getElementById('mainBtn').innerText=m=='buy'?'Acheter - Paiement Auto':'Vendre - Réception Auto';calc()}
+function toggleM(){setMode(mode=='buy'?'sell':'buy')}
+function selPay(el){document.querySelectorAll('.pay-btn').forEach(b=>b.classList.remove('active'));el.classList.add('active');selPayM=el.innerText}
+function calc(){let cr=document.getElementById('cr').value;let f=parseFloat(document.getElementById('f').value)||0;document.getElementById('c').value=(f/rates[cr]).toFixed(cr=='USDT'?2:6)}
+function calcR(){let cr=document.getElementById('cr').value;let cv=parseFloat(document.getElementById('c').value)||0;document.getElementById('f').value=Math.round(cv*rates[cr])}
+function pay(){
+ if(localStorage.getItem('kyc')!='ok'){alert('Fais ton KYC d\'abord');openM('kyc');return}
+ let ph=document.getElementById('cc').value+' '+document.getElementById('phone').value;
+ let f=document.getElementById('f').value; let cv=document.getElementById('c').value; let cr=document.getElementById('cr').value;
+ let b=document.getElementById('box'); b.style.display='block';
+ let id='AZ-'+Date.now().toString().slice(-6);
+ if(mode=='buy'){
+   b.innerHTML=`⏳ Paiement Auto initié...<br><br>📲 Envoie <b>${f} FCFA</b> via <b>${selPayM}</b> au marchand<br><b>+229 01 96 58 73 03 (ART ZEDMO)</b><br><br>Client: ${ph}<br>Tu recevras <b>${cv} ${cr}</b> auto<br><br><small>ID: ${id}</small>`;
+ }else{
+   b.innerHTML=`⏳ Vente Auto initiée...<br>Envoie ${cv} ${cr} à 0xArtZedmo...<br>Tu recevras ${f} FCFA via ${selPayM} au ${ph}<br><small>ID: ${id}</small>`;
+ }
+ let waMsg=`Bonjour ART ZEDMO,%0A${mode=='buy'?'ACHAT':'VENTE'}: ${cv} ${cr}%0AMontant: ${f} FCFA%0A via: ${selPayM}%0A Tel: ${ph}%0A ID: ${id}`;
+ window.open(`https://wa.me/2290196587303?text=${waMsg}`,'_blank');
+ setTimeout(()=>{b.innerHTML+='<br><br>✅ Paiement confirmé auto! Reçu SMS envoyé.'},3000);
+ let h=localStorage.getItem('hist')||''; localStorage.setItem('hist', `${mode} ${cv}${cr} - ${f}FCFA<br>`+h);
+}
+calc();
+if(localStorage.getItem('kyc')=='ok')document.getElementById('kycBtn').innerText='KYC Vérifié';
+</script>
+</body>
+                                                                                                                                                                                                                                                                 </html>
