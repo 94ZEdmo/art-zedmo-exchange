@@ -3,36 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ZEDMO V11 LOGOS + PAYS</title>
+<title>ART ZEDMO V8 FIX</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
-body{background:#070a0f;color:#fff;padding:16px;padding-bottom:190px}
+body{background:#070a0f;color:#fff;padding:14px;padding-bottom:200px}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.logo{color:#00ffb4;font-weight:900;letter-spacing:2px;font-size:18px}
+.logo{color:#00ffb4;font-weight:900;letter-spacing:2px;font-size:19px}
 .btnTop{padding:8px 14px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;cursor:pointer;margin-left:6px;font-size:12px}
-.card{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:18px;margin-bottom:14px}
+.card{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:16px;margin-bottom:12px}
 .cryptoRow{display:flex;gap:8px;overflow:auto}
-.cryptoBox{background:#121821;padding:11px 14px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;cursor:pointer;text-align:center}
+.cryptoBox{background:#0a0e14;padding:11px 14px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;cursor:pointer;text-align:center}
 .cryptoON{border-color:#00ffb4;background:rgba(0,255,180,.15)}
 .tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36;gap:4px}
 .tabBtn{flex:1;padding:12px;border:none;border-radius:24px;font-weight:800;cursor:pointer;background:transparent;color:#6b7f8f}
 .tabON{background:#fff;color:#000}
 .mmGroup{display:flex;gap:8px;flex-wrap:wrap}
-.mmBtn{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:20px;border:1.5px solid #1e2a36;background:#121821;color:#fff;cursor:pointer;font-size:13px;font-weight:600;transition:.2s}
+.mmBtn{display:flex;align-items:center;gap:6px;padding:10px 14px;border-radius:20px;border:1.5px solid #1e2a36;background:#121821;color:#fff;cursor:pointer;font-size:13px;font-weight:600}
 .mmON{background:#fff;color:#000;border-color:#fff;transform:scale(1.05)}
 .row{display:flex;gap:8px;margin-top:8px}
-.sel{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:13px;color:#fff}
-.inp{flex:1;background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;width:100%}
+.sel{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;outline:none}
+.inp{flex:1;background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;width:100%;outline:none}
 .netGroup{display:flex;gap:8px;margin-top:10px}
-.netBtn{padding:7px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#121821;color:#8a9bb0;font-weight:800;cursor:pointer}
+.netBtn{padding:7px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#121821;color:#8a9bb0;font-weight:800;cursor:pointer;font-size:11px}
 .netON{background:#00ffb4;color:#000;border-color:#00ffb4}
-.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:15px;border-radius:16px;font-weight:900;margin-top:14px;cursor:pointer}
+.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:15px;border-radius:16px;font-weight:900;margin-top:14px;cursor:pointer;font-size:15px}
 .swapBtn{width:48px;height:48px;background:#0e141e;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:16px auto;cursor:pointer;font-size:22px;color:#00ffb4}
-.navBar{position:fixed;bottom:18px;left:12px;right:12px;background:#0e141e;display:flex;justify-content:space-around;padding:12px 0;border-radius:24px;border:1px solid #2a3a4a;z-index:999999}
+.navBar{position:fixed;bottom:12px;left:12px;right:12px;background:#0e141e;display:flex;justify-content:space-around;padding:10px 0;border-radius:24px;border:1px solid #2a3a4a;z-index:999999}
 .navItem{font-size:10px;display:flex;flex-direction:column;align-items:center;color:#4a5a6a;cursor:pointer;padding:6px 14px;border-radius:12px;min-width:66px}
 .navON{color:#00ffb4;background:rgba(0,255,180,.15)}
 .sec{display:none}.secON{display:block}
-a[href*="netlify"], iframe[src*="netlify"]{display:none!important}
+.item{display:flex;justify-content:space-between;padding:12px;background:#0a0e14;border-radius:12px;margin:8px 0;border:1px solid #1e2a36;font-size:13px}
+.modalBox{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:999998;padding:16px}
+.showBox{display:flex}
+.innerBox{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:20px;width:100%;max-width:430px;max-height:90vh;overflow:auto}
+.qrWrap{background:#fff;padding:14px;border-radius:16px;text-align:center;margin:12px 0}
+.addrTxt{background:#0a0e14;border:1px solid #1e2a36;padding:10px;border-radius:10px;font-size:11px;word-break:break-all;color:#00ffb4;margin-top:8px}
+a[href*="netlify"]{display:none!important}
 </style>
 </head>
 <body>
@@ -54,7 +60,7 @@ a[href*="netlify"], iframe[src*="netlify"]{display:none!important}
 <div class="row">
 <select id="country" class="sel" style="width:160px">
 <option value="+229">Benin +229</option>
-<option value="+225">Cote d Ivoire +225</option>
+<option value="+225">CIV +225</option>
 <option value="+221">Senegal +221</option>
 <option value="+226">Burkina +226</option>
 <option value="+228">Togo +228</option>
@@ -73,16 +79,52 @@ a[href*="netlify"], iframe[src*="netlify"]{display:none!important}
 <div class="row"><div class="sel" style="width:70px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" value="50000"></div>
 <button class="swapBtn" id="swapBtn">↕</button>
 <span style="color:#9fb0bf;font-size:12px;margin:14px 0 8px;display:block;font-weight:600">Vous recevez</span>
-<div class="row"><select id="cryptoSel" class="sel" style="flex:1"><option value="USDT">USDT - Tether TRC20</option><option value="BTC">BTC - Bitcoin</option><option value="ETH">ETH - Ethereum</option></select></div>
+<div class="row"><select id="cryptoSel" class="sel" style="flex:1"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
 <div class="row" style="margin-top:8px"><input id="cryptoAmt" class="inp" value="82.64" style="font-weight:800;font-size:16px"></div>
 <div class="netGroup" id="netGroup"><button class="netBtn netON" data-net="TRC20">TRC20</button><button class="netBtn" data-net="ERC20">ERC20</button><button class="netBtn" data-net="BEP20">BEP20</button></div>
 <div style="text-align:center;margin:12px 0;color:#00ffb4;font-weight:700;font-size:12px" id="rateTxt">1 USDT = 605 FCFA | TRC20</div>
 <button class="mainBtn" id="btnConfirm">Confirmer WhatsApp 01 96 58 73 03</button>
 </div>
-</div>
-<div id="secPortefeuille" class="sec"><div class="card"><h3>Portefeuille - Depot QR</h3><div style="display:flex;gap:8px;margin:10px 0"><button id="dDep" class="mmBtn mmON" style="flex:1;justify-content:center">Depot QR</button><button id="dRet" class="mmBtn" style="flex:1;justify-content:center">Retrait</button></div><div id="depotBox"><select id="depCrypto" class="sel" style="width:100%"><option value="USDT">USDT TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH ERC20</option></select><div class="qrWrap"><div id="qrTitle" style="color:#000;font-weight:900;margin-bottom:8px">USDT TRC20</div><img id="qrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=USDT"><div class="addrTxt" id="qrAddr">TLyqzVq2q2hY3ARTZEDMO01USDT</div><button class="mainBtn" style="padding:10px;margin-top:10px;font-size:12px" onclick="copyAddr()">Copier Adresse</button></div></div></div></div>
-<div id="secHistorique" class="sec"><div class="card"><h3>Historique</h3><div id="histList"><div class="item"><span>50,000 FCFA -> 82.64 USDT</span><b style="color:#00ffb4">OK</b></div></div></div></div>
-<div id="secProfil" class="sec"><div class="card"><h3>Profil KYC</h3><div style="margin-top:12px"><div class="item"><span>Nom</span><b id="pName">Non connecte</b></div><div class="item"><span>Tel</span><b id="pPhone">01 96 58 73 03</b></div><div class="item"><span>KYC</span><b id="pKyc">Non verifie</b></div></div></div></div>
-<div class="navBar"><div id="nEchange" class="navItem navON"><span>↕</span>Echange</div><div id="nPortefeuille" class="navItem"><span>Portefeuille</span></div><div id="nHistorique" class="navItem"><span>Historique</span></div><div id="nProfil" class="navItem"><span>Profil</span></div></div>
-<div class="modalBox" id="modalAuth"><div class="innerBox"><h3>Inscription</h3><input id="aName" class="inp" placeholder="Nom" style="width:100%;margin-bottom:8px"><input id="aPhone" class="inp" value="01 96 58 73 03" style="width:100%;margin-bottom:8px"><button class="mainBtn" id="doAuthBtn">S inscrire</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" id="closeAuth">Fermer</button></div></div>
-<div class="modalBox" id="modalKyc"><div class="innerBox"><h3>KYC</h3><input id="kNum" class="inp" placeholder="Numero piece" style="width:100%;margin-bottom
+                    </div><div id="secPortefeuille" class="sec"><div class="card"><h3>Portefeuille</h3><div style="display:flex;gap:8px;margin:10px 0"><button id="dDep" class="mmBtn mmON" style="flex:1;justify-content:center">Depot QR</button><button id="dRet" class="mmBtn" style="flex:1;justify-content:center">Retrait</button></div><div id="depotBox"><select id="depCrypto" class="sel" style="width:100%"><option value="USDT">USDT TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select><div class="qrWrap"><div id="qrTitle" style="color:#000;font-weight:900;margin-bottom:8px">USDT TRC20</div><img id="qrImg" src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=ARTZEDMO"><div class="addrTxt" id="qrAddr">TLyqzVq2q2hY3ARTZEDMO01USDT0196587303TRC20</div><button class="mainBtn" style="padding:10px;margin-top:10px;font-size:12px" id="copyBtn">Copier Adresse</button></div></div><div id="retraitBox" style="display:none"><input id="retAddr" class="inp" placeholder="Adresse destination" style="width:100%;margin-bottom:8px"><input id="retAmt" class="inp" placeholder="Montant" style="width:100%;margin-bottom:8px"><button class="mainBtn" onclick="alert('Retrait demande WhatsApp')">Demander Retrait</button></div></div></div>
+<div id="secHistorique" class="sec"><div class="card"><h3>Historique</h3><div id="histList"><div class="item"><span>50,000 FCFA -> 82.64 USDT<br><small>MTN +229 - Aujourd'hui</small></span><b style="color:#00ffb4">✔</b></div></div></div></div>
+<div id="secProfil" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:12px"><div class="item"><span>Nom</span><b id="pName">Non connecte</b></div><div class="item"><span>Tel</span><b id="pPhone">01 96 58 73 03</b></div><div class="item"><span>KYC</span><b id="pKyc">Non verifie</b></div></div><div class="row" style="margin-top:12px"><button class="btnTop" style="flex:1" id="btnEdit">Modifier</button><button class="btnTop" style="flex:1" id="btnKyc2">Faire KYC</button></div></div></div>
+<div class="navBar"><div id="nEchange" class="navItem navON"><span>↕</span>Echange</div><div id="nPortefeuille" class="navItem"><span>💼</span>Portefeuille</div><div id="nHistorique" class="navItem"><span>🕒</span>Historique</div><div id="nProfil" class="navItem"><span>👤</span>Profil</div></div>
+<div class="modalBox" id="modalAuth"><div class="innerBox"><h3>Inscription / Connexion</h3><input id="aName" class="inp" placeholder="Nom complet" style="width:100%;margin-bottom:8px"><input id="aPhone" class="inp" value="01 96 58 73 03" style="width:100%;margin-bottom:8px"><input id="aEmail" class="inp" placeholder="Email" style="width:100%;margin-bottom:8px"><button class="mainBtn" id="doAuthBtn">S'inscrire</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" id="closeAuth">Fermer</button></div></div>
+<div class="modalBox" id="modalKyc"><div class="innerBox"><h3>Verification KYC</h3><select id="kType" class="sel" style="width:100%;margin-bottom:8px"><option>CNI</option><option>Passeport</option><option>CIP</option></select><input id="kNum" class="inp" placeholder="Numero piece" style="width:100%;margin-bottom:8px"><button class="mainBtn" id="doKycBtn">Envoyer KYC</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" id="closeKyc">Fermer</button></div></div>
+<script>
+var D=document;
+var cryptoNow='USDT',modeNow='buy',mmNow='Orange Money',netNow='TRC20';
+var rates={USDT:605,BTC:62000000,ETH:2100000};
+var WA='2290196587303';
+function goSec(n){var all=D.querySelectorAll('.sec');for(var i=0;i<all.length;i++){all[i].classList.remove('secON');}D.getElementById('sec'+n).classList.add('secON');var navs=D.querySelectorAll('.navItem');for(var j=0;j<navs.length;j++){navs[j].classList.remove('navON');}D.getElementById('n'+n).classList.add('navON');}
+D.getElementById('nEchange').onclick=function(){goSec('Echange');};
+D.getElementById('nPortefeuille').onclick=function(){goSec('Portefeuille');};
+D.getElementById('nHistorique').onclick=function(){goSec('Historique');};
+D.getElementById('nProfil').onclick=function(){goSec('Profil');};
+var cryptos=D.querySelectorAll('.cryptoBox');for(var c=0;c<cryptos.length;c++){cryptos[c].onclick=function(){for(var k=0;k<cryptos.length;k++){cryptos[k].classList.remove('cryptoON');}this.classList.add('cryptoON');cryptoNow=this.getAttribute('data-c');D.getElementById('cryptoSel').value=cryptoNow;calcNow();};}
+D.getElementById('cryptoSel').onchange=function(){cryptoNow=this.value;calcNow();};
+D.getElementById('bBuy').onclick=function(){setMode('buy');};
+D.getElementById('bSell').onclick=function(){setMode('sell');};
+function setMode(m){modeNow=m;if(m=='buy'){D.getElementById('bBuy').className='tabBtn tabON';D.getElementById('bSell').className='tabBtn';}else{D.getElementById('bBuy').className='tabBtn';D.getElementById('bSell').className='tabBtn tabON';}D.getElementById('labPay').innerText=m=='buy'?'Vous payez (FCFA)':'Vous envoyez ('+cryptoNow+')';}
+D.getElementById('swapBtn').onclick=function(){modeNow=modeNow=='buy'?'sell':'buy';setMode(modeNow);};
+// FIX MTN MOOV - AVEC ESPACE CORRIGE
+var mmBtns=D.querySelectorAll('#mmGroup.mmBtn');
+for(var m1=0;m1<mmBtns.length;m1++){mmBtns[m1].onclick=function(){for(var x=0;x<mmBtns.length;x++){mmBtns[x].classList.remove('mmON');}this.classList.add('mmON');mmNow=this.getAttribute('data-mm');};}
+var netBtns=D.querySelectorAll('#netGroup.netBtn');
+for(var n1=0;n1<netBtns.length;n1++){netBtns[n1].onclick=function(){for(var y=0;y<netBtns.length;y++){netBtns[y].classList.remove('netON');}this.classList.add('netON');netNow=this.getAttribute('data-net');calcNow();};}
+function calcNow(){var a=parseFloat(D.getElementById('amt').value)||0;var res=a/rates[cryptoNow];D.getElementById('cryptoAmt').value=res.toFixed(2);D.getElementById('rateTxt').innerText='1 '+cryptoNow+' = '+rates[cryptoNow]+' FCFA | '+netNow;}
+D.getElementById('amt').oninput=function(){calcNow();};
+D.getElementById('btnIns').onclick=function(){D.getElementById('modalAuth').classList.add('showBox');};
+D.getElementById('btnKyc').onclick=function(){D.getElementById('modalKyc').classList.add('showBox');};
+D.getElementById('btnKyc2').onclick=function(){D.getElementById('modalKyc').classList.add('showBox');};
+D.getElementById('btnEdit').onclick=function(){D.getElementById('modalAuth').classList.add('showBox');};
+D.getElementById('closeAuth').onclick=function(){D.getElementById('modalAuth').classList.remove('showBox');};
+D.getElementById('closeKyc').onclick=function(){D.getElementById('modalKyc').classList.remove('showBox');};
+D.getElementById('doAuthBtn').onclick=function(){var n=D.getElementById('aName').value||'Zedmo';var p=D.getElementById('aPhone').value;var e=D.getElementById('aEmail').value;localStorage.setItem('art_user',JSON.stringify({name:n,phone:p,email:e}));D.getElementById('userSt').innerText='✔ '+n;D.getElementById('pName').innerText=n;D.getElementById('pPhone').innerText=p;D.getElementById('modalAuth').classList.remove('showBox');goSec('Profil');};
+D.getElementById('doKycBtn').onclick=function(){var num=D.getElementById('kNum').value;if(!num){alert('Entrez numero piece');return;}localStorage.setItem('art_kyc','ok');D.getElementById('kycSt').innerText='KYC Verifie ✔';D.getElementById('kycSt').style.background='#00ffb4';D.getElementById('kycSt').style.color='#000';D.getElementById('pKyc').innerText='Verifie ✔';D.getElementById('modalKyc').classList.remove('showBox');};
+D.getElementById('btnConfirm').onclick=function(){var u=localStorage.getItem('art_user');if(!u){D.getElementById('modalAuth').classList.add('showBox');return;}var k=localStorage.getItem('art_kyc');if(!k){D.getElementById('modalKyc').classList.add('showBox');return;}var amt=D.getElementById('amt').value;var camt=D.getElementById('cryptoAmt').value;var phone=D.getElementById('phone').value;var country=D.getElementById('country').value;var user=JSON.parse(u);var msg='Bonjour ART ZEDMO,%0ACommande '+modeNow.toUpperCase()+'%0A'+amt+' FCFA -> '+camt+' '+cryptoNow+' ('+netNow+')%0AMoyen: '+mmNow+' '+country+' '+phone+'%0AClient: '+user.name;window.open('https://wa.me/'+WA+'?text='+msg,'_blank');goSec('Historique');};
+setInterval(function(){var all=D.querySelectorAll('div,a,span,iframe');for(var i=0;i<all.length;i++){var el=all[i];if(el.innerText&&el.innerText.trim()=='Powered by Netlify'){el.remove();}}},400);
+calcNow();
+</script>
+</body>
+  </html>
