@@ -127,4 +127,39 @@ setInterval(function(){var all=D.querySelectorAll('div,a,span,iframe');for(var i
 calcNow();
 </script>
 </body>
-  </html>
+  </html><div id="secPortefeuille" class="sec"><div class="card"><h3>Portefeuille</h3><div class="item"><span>USDT</span><b>82.64</b></div></div></div>
+<div id="secHistorique" class="sec"><div class="card"><h3>Historique</h3><div id="histList"><div class="item"><span>50,000 FCFA -> 82.64 USDT</span><b style="color:#00ffb4">✔</b></div></div></div></div>
+<div id="secProfil" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:12px"><div class="item"><span>Nom</span><b id="pName">Non connecte</b></div><div class="item"><span>Tel</span><b id="pPhone">01 96 58 73 03</b></div><div class="item"><span>KYC</span><b id="pKyc">Non verifie</b></div></div><div class="row" style="margin-top:12px"><button class="btnTop" style="flex:1" id="btnEdit">Modifier</button><button class="btnTop" style="flex:1" id="btnKyc2">Faire KYC</button></div></div></div>
+<div class="navBar"><div id="nEchange" class="navItem navON"><span>↕</span>Echange</div><div id="nPortefeuille" class="navItem"><span>💼</span>Portefeuille</div><div id="nHistorique" class="navItem"><span>🕒</span>Historique</div><div id="nProfil" class="navItem"><span>👤</span>Profil</div></div>
+<div class="modalBox" id="modalAuth"><div class="innerBox"><h3>Inscription / Connexion</h3><input id="aName" class="inp" placeholder="Nom complet" style="width:100%;margin-bottom:8px"><input id="aPhone" class="inp" value="01 96 58 73 03" style="width:100%;margin-bottom:8px"><button class="mainBtn" id="doAuthBtn">S'inscrire</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" id="closeAuth">Fermer</button></div></div>
+<div class="modalBox" id="modalKyc"><div class="innerBox"><h3>Verification KYC</h3><input id="kNum" class="inp" placeholder="Numero piece" style="width:100%;margin-bottom:8px"><button class="mainBtn" id="doKycBtn">Envoyer KYC</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" id="closeKyc">Fermer</button></div></div>
+<script>
+var D=document;var cryptoNow='USDT',modeNow='buy',mmNow='Orange Money',netNow='TRC20';var rates={USDT:605,BTC:62000000,ETH:2100000};var WA='2290196587303';
+function goSec(n){var all=D.querySelectorAll('.sec');for(var i=0;i<all.length;i++){all[i].classList.remove('secON');}D.getElementById('sec'+n).classList.add('secON');var navs=D.querySelectorAll('.navItem');for(var j=0;j<navs.length;j++){navs[j].classList.remove('navON');}D.getElementById('n'+n).classList.add('navON');}
+D.getElementById('nEchange').onclick=function(){goSec('Echange');};D.getElementById('nPortefeuille').onclick=function(){goSec('Portefeuille');};D.getElementById('nHistorique').onclick=function(){goSec('Historique');};D.getElementById('nProfil').onclick=function(){goSec('Profil');};
+var cryptos=D.querySelectorAll('.cryptoBox');for(var c=0;c<cryptos.length;c++){cryptos[c].onclick=function(){for(var k=0;k<cryptos.length;k++){cryptos[k].classList.remove('cryptoON');}this.classList.add('cryptoON');cryptoNow=this.getAttribute('data-c');D.getElementById('cryptoSel').value=cryptoNow;calcNow();};}
+D.getElementById('cryptoSel').onchange=function(){cryptoNow=this.value;calcNow();};
+D.getElementById('bBuy').onclick=function(){setMode('buy');};D.getElementById('bSell').onclick=function(){setMode('sell');};
+function setMode(m){modeNow=m;if(m=='buy'){D.getElementById('bBuy').className='tabBtn tabON';D.getElementById('bSell').className='tabBtn';}else{D.getElementById('bBuy').className='tabBtn';D.getElementById('bSell').className='tabBtn tabON';}}
+D.getElementById('swapBtn').onclick=function(){modeNow=modeNow=='buy'?'sell':'buy';setMode(modeNow);};
+// CORRECTION CERCLE 1 - AVEC ESPACE
+var mmBtns=D.querySelectorAll('#mmGroup.mmBtn');
+for(var m1=0;m1<mmBtns.length;m1++){mmBtns[m1].onclick=function(){for(var x=0;x<mmBtns.length;x++){mmBtns[x].classList.remove('mmON');}this.classList.add('mmON');mmNow=this.getAttribute('data-mm');};}
+var netBtns=D.querySelectorAll('#netGroup.netBtn');
+for(var n1=0;n1<netBtns.length;n1++){netBtns[n1].onclick=function(){for(var y=0;y<netBtns.length;y++){netBtns[y].classList.remove('netON');}this.classList.add('netON');netNow=this.getAttribute('data-net');calcNow();};}
+function calcNow(){var a=parseFloat(D.getElementById('amt').value)||0;var res=a/rates[cryptoNow];D.getElementById('cryptoAmt').value=res.toFixed(2);D.getElementById('rateTxt').innerText='1 '+cryptoNow+' = '+rates[cryptoNow]+' FCFA | '+netNow;var fee=a*0.02;var total=a+fee;D.getElementById('feeTxt').innerText=Math.round(fee).toLocaleString()+' FCFA';D.getElementById('totalTxt').innerText=Math.round(total).toLocaleString()+' FCFA';}
+D.getElementById('amt').oninput=function(){calcNow();};
+D.getElementById('btnIns').onclick=function(){D.getElementById('modalAuth').classList.add('showBox');};
+D.getElementById('btnKyc').onclick=function(){D.getElementById('modalKyc').classList.add('showBox');};
+D.getElementById('btnKyc2').onclick=function(){D.getElementById('modalKyc').classList.add('showBox');};
+D.getElementById('btnEdit').onclick=function(){D.getElementById('modalAuth').classList.add('showBox');};
+D.getElementById('closeAuth').onclick=function(){D.getElementById('modalAuth').classList.remove('showBox');};
+D.getElementById('closeKyc').onclick=function(){D.getElementById('modalKyc').classList.remove('showBox');};
+D.getElementById('doAuthBtn').onclick=function(){var n=D.getElementById('aName').value||'Zedmo';var p=D.getElementById('aPhone').value;localStorage.setItem('art_user',JSON.stringify({name:n,phone:p}));D.getElementById('userSt').innerText='✔ '+n;D.getElementById('pName').innerText=n;D.getElementById('pPhone').innerText=p;D.getElementById('modalAuth').classList.remove('showBox');};
+D.getElementById('doKycBtn').onclick=function(){var num=D.getElementById('kNum').value;if(!num){alert('Entrez numero piece');return;}localStorage.setItem('art_kyc','ok');D.getElementById('kycSt').innerText='KYC Verifie ✔';D.getElementById('kycSt').style.background='#00ffb4';D.getElementById('kycSt').style.color='#000';D.getElementById('pKyc').innerText='Verifie ✔';D.getElementById('modalKyc').classList.remove('showBox');};
+D.getElementById('btnConfirm').onclick=function(){var u=localStorage.getItem('art_user');if(!u){D.getElementById('modalAuth').classList.add('showBox');return;}var k=localStorage.getItem('art_kyc');if(!k){D.getElementById('modalKyc').classList.add('showBox');return;}var amt=D.getElementById('amt').value;var camt=D.getElementById('cryptoAmt').value;var phone=D.getElementById('phone').value;var country=D.getElementById('country').value;var fee=D.getElementById('feeTxt').innerText;var total=D.getElementById('totalTxt').innerText;var user=JSON.parse(u);var msg='Bonjour ART ZEDMO,%0ACommande '+modeNow.toUpperCase()+'%0A'+amt+' FCFA -> '+camt+' '+cryptoNow+' ('+netNow+')%0AFrais: '+fee+' | Total: '+total+'%0AMoyen: '+mmNow+' '+country+' '+phone+'%0AClient: '+user.name;window.open('https://wa.me/'+WA+'?text='+msg,'_blank');goSec('Historique');};
+setInterval(function(){var all=D.querySelectorAll('div,a,span,iframe');for(var i=0;i<all.length;i++){var el=all[i];if(el.innerText&&el.innerText.trim()=='Powered by Netlify'){el.remove();}}},400);
+calcNow();
+</script>
+</body>
+</html>
