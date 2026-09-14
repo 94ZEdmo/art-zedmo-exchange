@@ -1,124 +1,96 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ZEDMO EXCHANGE - V4</title>
+<title>ART ZEDMO V6 - Inscription + KYC</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:Inter,system-ui}
-body{background:#070a0f;color:#fff;padding:16px;padding-bottom:100px}
-.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui}
+body{background:#070a0f;color:#fff;padding:16px;padding-bottom:110px}
+.header{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
 .logo{color:#00ffb4;font-weight:900;letter-spacing:2px;font-size:18px}
+.btn-sm{padding:8px 14px;border-radius:20px;border:1px solid #00ffb4;background:transparent;color:#00ffb4;font-size:12px;font-weight:700;cursor:pointer}
 .card{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:18px;margin-bottom:14px}
-.solde{color:#6b7f8f;font-size:12px;text-align:center}
-.total{font-size:30px;font-weight:900;text-align:center;margin:6px 0}
+.solde{color:#6b7f8f;font-size:11px;text-align:center}
+.total{font-size:26px;font-weight:900;text-align:center;margin:6px 0}
 .crypto-row{display:flex;gap:8px;overflow-x:auto}
-.crypto{background:#121821;padding:12px 16px;border-radius:14px;min-width:115px;border:1px solid #1e2a36;cursor:pointer}
-.crypto.active{border-color:#00ffb4;background:rgba(0,255,180,0.1)}
+.crypto{background:#121821;padding:11px 14px;border-radius:14px;min-width:108px;border:1px solid #1e2a36;cursor:pointer}
+.crypto.active{border-color:#00ffb4;background:rgba(0,255,180,.12)}
 .crypto span{font-size:10px;color:#6b7f8f}
-.crypto b{display:block;font-size:13px;margin-top:3px}
-.tabs{display:flex;background:#121821;border-radius:30px;padding:4px;border:1px solid #1e2a36}
+.crypto b{display:block;font-size:12px;margin-top:2px}
+.tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36}
 .tabs button{flex:1;padding:12px;border:none;border-radius:24px;font-weight:800;cursor:pointer}
-.tabs.on{background:#00ffb4;color:#000}
-.tabs.off{background:transparent;color:#6b7f8f}
-.label{font-size:12px;color:#6b7f8f;margin:14px 0 8px;display:block}
+.tabs .on{background:#fff;color:#000}
+.tabs .off{background:transparent;color:#6b7f8f}
+.label{font-size:12px;color:#6b7f8f;margin:12px 0 6px;display:block}
 .mm{display:flex;flex-wrap:wrap;gap:8px}
 .mm button{padding:9px 14px;border-radius:22px;border:1px solid #1e2a36;background:#121821;color:#fff;font-size:12px;cursor:pointer}
 .mm button.active{background:#fff;color:#000;font-weight:700}
-.input-row{display:flex;gap:8px;margin-top:10px}
-.badge{background:#1e2a36;color:#fff;padding:12px 14px;border-radius:14px;font-size:12px;font-weight:800;min-width:70px;text-align:center;display:flex;align-items:center;justify-content:center}
-.input{flex:1;background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:14px;color:#fff;font-size:16px;outline:none;width:100%}
+.row{display:flex;gap:8px;margin-top:8px}
+.sel{background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;font-size:14px;outline:none}
+.inp{flex:1;background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;font-size:15px;outline:none;width:100%}
 .net{display:flex;gap:8px;margin-top:10px}
-.net button{padding:8px 14px;border-radius:20px;border:1px solid #1e2a36;background:#121821;color:#6b7f8f;font-size:11px;font-weight:700;cursor:pointer}
+.net button{padding:7px 13px;border-radius:20px;border:1px solid #1e2a36;background:#121821;color:#6b7f8f;font-size:11px;font-weight:700;cursor:pointer}
 .net button.active{background:#00ffb4;color:#000;border-color:#00ffb4}
-.btn-main{width:100%;background:#00ffb4;color:#000;border:none;padding:16px;border-radius:16px;font-weight:900;font-size:16px;margin-top:16px;cursor:pointer}
-.select{flex:1;background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:14px;color:#fff;font-size:15px;outline:none}
-.convert{text-align:center;margin:14px 0;color:#00ffb4;font-weight:700;font-size:13px}
-.nav{position:fixed;bottom:0;left:0;right:0;background:#0e141e;display:flex;justify-content:space-around;padding:12px 0;border-top:1px solid #1e2a36}
-.nav span{font-size:10px;display:flex;flex-direction:column;align-items:center;color:#4a5a6a}
-.nav span.active{color:#00ffb4}
+.btn-main{width:100%;background:#00ffb4;color:#000;border:none;padding:15px;border-radius:16px;font-weight:900;font-size:15px;margin-top:14px;cursor:pointer}
+.rate{text-align:center;margin:12px 0;color:#00ffb4;font-weight:700;font-size:12px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#0e141e;display:flex;justify-content:space-around;padding:10px 0;border-top:1px solid #1e2a36;z-index:999}
+.nav div{font-size:10px;display:flex;flex-direction:column;align-items:center;color:#4a5a6a;cursor:pointer;padding:4px 10px;border-radius:12px}
+.nav div.active{color:#00ffb4;background:rgba(0,255,180,.1)}
+.section{display:none}.section.active{display:block}
+.list-item{display:flex;justify-content:space-between;padding:12px;background:#0a0e14;border-radius:12px;margin:8px 0;border:1px solid #1e2a36;font-size:13px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:1000;padding:16px}
+.modal.show{display:flex}
+.box{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:20px;width:100%;max-width:420px;max-height:90vh;overflow-y:auto}
+.file{border:1px dashed #1e2a36;padding:12px;border-radius:12px;margin:8px 0;background:#0a0e14}
+.badge-kyc{display:inline-block;padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800}
+.badge-ok{background:#00ffb4;color:#000}.badge-no{background:#ff3b3b;color:#fff}.badge-wait{background:#ffb400;color:#000}
 </style>
 </head>
 <body>
-<div class="header"><div class="logo">ART ZEDMO</div><div>🔔</div></div>
+<div class="header"><div class="logo">ART ZEDMO</div><div><button class="btn-sm" onclick="openM('auth')">Inscription</button> <button class="btn-sm" onclick="openM('kyc')">KYC</button></div></div>
+
+<div id="sec-echange" class="section active">
 <div class="card">
-<div class="solde">SOLDE TOTAL</div>
-<div class="total">3 161 053 FCFA</div>
+<div class="solde">SOLDE TOTAL</div><div class="total">3 161 053 FCFA</div>
 <div class="crypto-row">
 <div class="crypto active" onclick="setCrypto('USDT')"><span>USDT</span><b>605 FCFA</b></div>
-<div class="crypto" onclick="setCrypto('BTC')"><span>BTC</span><b>62M FCFA</b></div>
-<div class="crypto" onclick="setCrypto('ETH')"><span>ETH</span><b>2.1M FCFA</b></div>
+<div class="crypto" onclick="setCrypto('BTC')"><span>BTC</span><b>62M</b></div>
+<div class="crypto" onclick="setCrypto('ETH')"><span>ETH</span><b>2.1M</b></div>
 </div>
+<div style="text-align:center;margin-top:10px"><span id="kycStatus" class="badge-kyc badge-no">KYC Non vérifié</span> <span id="userStatus" style="font-size:11px;color:#6b7f8f;margin-left:6px">Non connecté</span></div>
 </div>
 <div class="card">
-<div class="tabs"><button id="btnBuy" class="on" onclick="setMode('buy')">Acheter</button><button id="btnSell" class="off" onclick="setMode('sell')">Vendre</button></div>
-<span class="label">📱 Mode de paiement</span>
-<div class="mm">
-<button class="active" onclick="setMM('Orange Money')">🟠 Orange</button>
-<button onclick="setMM('MTN MoMo')">🟡 MTN</button>
-<button onclick="setMM('Wave')">🔵 Wave</button>
-<button onclick="setMM('Moov Money')">🔵 Moov</button>
-</div>
-<div class="input-row">
-<div class="badge">+229</div>
-<input id="phone" class="input" value="97 12 34 56" placeholder="Numéro">
-</div>
-<span class="label" id="labelPay">Vous payez (FCFA)</span>
-<div class="input-row">
-<div class="badge">CFA</div>
-<input id="amount" class="input" type="number" value="50000" oninput="calc()">
-</div>
-<div style="text-align:center;margin:12px 0;color:#1e2a36">↕</div>
+<div class="tabs"><button id="bBuy" class="on" onclick="setMode('buy')">Acheter</button><button id="bSell" class="off" onclick="setMode('sell')">Vendre</button></div>
+<span class="label">📱 Paiement</span>
+<div class="mm"><button class="active" onclick="setMM(this,'Orange Money')">🟠 Orange</button><button onclick="setMM(this,'MTN MoMo')">🟡 MTN</button><button onclick="setMM(this,'Wave')">🔵 Wave</button><button onclick="setMM(this,'Moov Money')">🔵 Moov</button></div>
+<span class="label">Numéro</span>
+<div class="row"><select id="country" class="sel" style="width:110px"><option value="+229">🇧🇯 +229</option><option value="+225">🇨🇮 +225</option><option value="+221">🇸🇳 +221</option><option value="+226">🇧🇫 +226</option><option value="+228">🇹🇬 +228</option><option value="+223">🇲🇱 +223</option></select><input id="phone" class="inp" value="97 12 34 56"></div>
+<span class="label" id="labPay">Vous payez (FCFA)</span>
+<div class="row"><div class="sel" style="width:70px;text-align:center">CFA</div><input id="amt" class="inp" type="number" value="50000" oninput="calc()"></div>
+<div style="text-align:center;margin:10px;color:#1e2a36">↕</div>
 <span class="label">Vous recevez</span>
-<div class="input-row">
-<select id="cryptoSelect" class="select" onchange="setCrypto(this.value)"><option value="USDT" selected>USDT - Tether</option><option value="BTC">BTC - Bitcoin</option><option value="ETH">ETH - Ethereum</option></select>
-</div>
-<div class="input-row" style="margin-top:8px">
-<input id="cryptoAmount" class="input" value="81,40" oninput="calcReverse()">
-</div>
-<div class="net">
-<button class="active" onclick="setNet(this,'TRC20')">TRC20</button>
-<button onclick="setNet(this,'ERC20')">ERC20</button>
-<button onclick="setNet(this,'BEP20')">BEP20</button>
-</div>
-<div class="convert" id="rateTxt">1 USDT = 605 FCFA | TRC20</div>
-<button class="btn-main" onclick="order()" id="mainBtn">Confirmer</button>
-</div>
-<div class="nav"><span class="active">↕ Échange</span><span>💼 Portefeuille</span><span>🕒 Historique</span><span>👤 Profil</span></div>
+<div class="row"><select id="cryptoSel" class="sel" style="flex:1" onchange="setCrypto(this.value)"><option value="USDT">USDT - Tether</option><option value="BTC">BTC - Bitcoin</option><option value="ETH">ETH - Ethereum</option></select></div>
+<div class="row" style="margin-top:8px"><input id="cryptoAmt" class="inp" value="82,64" oninput="calcRev()"></div>
+<div class="net"><button class="active" onclick="setNet(this,'TRC20')">TRC20</button><button onclick="setNet(this,'ERC20')">ERC20</button><button onclick="setNet(this,'BEP20')">BEP20</button></div>
+<div class="rate" id="rateTxt">1 USDT = 605 FCFA | TRC20</div>
+<button class="btn-main" onclick="doOrder()">Confirmer</button>
+</div></div>
+
+<div id="sec-portefeuille" class="section"><div class="card"><h3>💼 Portefeuille</h3><div class="list-item"><span>USDT (TRC20)</span><b>1,240.50</b></div><div class="list-item"><span>BTC</span><b>0.0123</b></div><div class="list-item"><span>ETH</span><b>0.85</b></div><div class="list-item"><span>FCFA</span><b>3 161 053</b></div><button class="btn-main" onclick="showSec('echange')">Échanger maintenant</button></div></div>
+
+<div id="sec-historique" class="section"><div class="card"><h3>🕒 Historique</h3><div id="histList"><div class="list-item"><span>📥 50,000 FCFA → 82.64 USDT<br><small>MTN +229 - Aujourd'hui</small></span><b style="color:#00ffb4">✔</b></div></div></div></div>
+
+<div id="sec-profil" class="section"><div class="card"><h3>👤 Profil & KYC</h3><div id="profilInfo" style="margin-top:12px"><div class="list-item"><span>Nom</span><b id="pName">Non connecté</b></div><div class="list-item"><span>Téléphone</span><b id="pPhone">-</b></div><div class="list-item"><span>Email</span><b id="pEmail">-</b></div><div class="list-item"><span>KYC</span><b id="pKyc">Non vérifié</b></div><div class="list-item"><span>Pièce</span><b id="pPiece">-</b></div></div><div class="row" style="margin-top:12px"><button class="btn-sm" style="flex:1" onclick="openM('auth')">Modifier profil</button><button class="btn-sm" style="flex:1" onclick="openM('kyc')">Faire KYC</button></div></div></div>
+
+<div class="nav"><div id="n-echange" class="active" onclick="showSec('echange')"><span>↕</span>Échange</div><div id="n-portefeuille" onclick="showSec('portefeuille')"><span>💼</span>Portefeuille</div><div id="n-historique" onclick="showSec('historique')"><span>🕒</span>Historique</div><div id="n-profil" onclick="showSec('profil')"><span>👤</span>Profil</div></div>
+
+<div class="modal" id="modal-auth"><div class="box"><h3>Inscription / Connexion</h3><span class="label">Nom complet</span><input id="aName" class="inp" placeholder="Ex: Zedmo Art" style="width:100%;margin-bottom:8px"><span class="label">Téléphone</span><div class="row"><select class="sel" style="width:100px"><option>+229</option><option>+225</option></select><input id="aPhone" class="inp" placeholder="97 12 34 56" style="flex:1"></div><span class="label">Email</span><input id="aEmail" class="inp" placeholder="zedmo@gmail.com" style="width:100%;margin:8px 0"><span class="label">Mot de passe</span><input id="aPass" type="password" class="inp" placeholder="••••••••" style="width:100%;margin-bottom:12px"><button class="btn-main" onclick="doAuth()">S'inscrire & Se connecter</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" onclick="closeM('auth')">Fermer</button></div></div>
+
+<div class="modal" id="modal-kyc"><div class="box"><h3>Vérification KYC</h3><p style="font-size:11px;color:#6b7f8f;margin:6px 0 12px">Requis pour échanger plus de 100,000 FCFA</p><span class="label">Type de pièce</span><select id="kType" class="sel" style="width:100%;margin-bottom:8px"><option value="CNI">CNI - Carte Nationale d'Identité</option><option value="Passeport">Passeport</option><option value="Carte Consulaire">Carte Consulaire</option><option value="Carte d'Électeur">Carte d'Électeur</option><option value="Permis de Conduire">Permis de Conduire</option><option value="Carte de Séjour">Carte de Séjour</option><option value="Attestation">Attestation d'Identité</option></select><span class="label">Numéro de la pièce</span><input id="kNum" class="inp" placeholder="Ex: B12345678" style="width:100%;margin-bottom:8px"><span class="label">Nationalité</span><select id="kNat" class="sel" style="width:100%;margin-bottom:8px"><option>Béninoise</option><option>Ivoirienne</option><option>Sénégalaise</option><option>Burkinabè</option><option>Togolaise</option><option>Malienne</option><option>Nigériane</option><option>Autre</option></select><span class="label">Photo Recto</span><div class="file"><input type="file" id="kRecto" accept="image/*"></div><span class="label">Photo Verso</span><div class="file"><input type="file" id="kVerso" accept="image/*"></div><span class="label">Selfie avec pièce</span><div class="file"><input type="file" id="kSelfie" accept="image/*"></div><button class="btn-main" onclick="doKyc()">Envoyer KYC</button><button class="sel" style="width:100%;margin-top:8px;text-align:center" onclick="closeM('kyc')">Fermer</button></div></div>
+
 <script>
-let crypto='USDT', mode='buy', mm='Orange Money', network='TRC20';
+let crypto='USDT', mode='buy', mm='Orange Money', net='TRC20';
 const rates={USDT:605,BTC:62000000,ETH:2100000};
-function setCrypto(c){
- crypto=c; document.getElementById('cryptoSelect').value=c;
- document.querySelectorAll('.crypto').forEach(e=>e.classList.toggle('active', e.innerText.includes(c)));
- calc();
-}
-function setMode(m){
- mode=m;
- document.getElementById('btnBuy').className=m==='buy'?'on':'off';
- document.getElementById('btnSell').className=m==='sell'?'on':'off';
- calc();
-}
-function setMM(m){ mm=m; document.querySelectorAll('.mm button').forEach(b=>b.classList.remove('active')); event.currentTarget.classList.add('active');}
-function setNet(el,n){ network=n; document.querySelectorAll('.net button').forEach(b=>b.classList.remove('active')); el.classList.add('active'); document.getElementById('rateTxt').innerText=`1 ${crypto} = ${rates[crypto].toLocaleString()} FCFA | ${network}`;}
-function calc(){
- let amt=parseFloat(document.getElementById('amount').value)||0;
- let res=amt/rates[crypto];
- document.getElementById('cryptoAmount').value=res.toFixed(2).replace('.',',');
- document.getElementById('rateTxt').innerText=`1 ${crypto} = ${rates[crypto].toLocaleString()} FCFA | ${network}`;
-}
-function calcReverse(){
- let v=parseFloat(document.getElementById('cryptoAmount').value.replace(',','.'))||0;
- document.getElementById('amount').value=Math.round(v*rates[crypto]);
-}
-function order(){
- let amt=document.getElementById('amount').value;
- let camount=document.getElementById('cryptoAmount').value;
- let phone=document.getElementById('phone').value;
- let msg=`Bonjour ART ZEDMO,%0AJe veux ${mode==='buy'?'ACHETER':'VENDRE'}:%0A- ${amt} FCFA%0A- Reçois: ${camount} ${crypto} (${network})%0A- Via: ${mm}%0A- Num: +229 ${phone}`;
- window.open(`https://wa.me/22997123456?text=${msg}`,'_blank');
-}
-calc();
-</script>
-</body>
- </html>
+function showSec(n){document.querySelectorAll('.section').forEach(s=>s
