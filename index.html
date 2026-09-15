@@ -3,189 +3,667 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ZEDMO V3 - Admin</title>
+<title>ART ZEDMO V5 PRO - CLEAN ADMIN</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
-body{background:#070a0f;color:#fff;padding:12px;padding-bottom:110px;max-width:500px;margin:auto}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,Segoe UI,sans-serif}
+body{background:#070a0f;color:#fff;padding:14px;padding-bottom:120px;max-width:480px;margin:auto}
 .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;font-size:18px;user-select:none}
-.btnTop{padding:7px 11px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:10px;margin-left:4px}
-.card{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:14px;margin-bottom:12px}
-.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
-.cryptoBox{background:#0a0e14;padding:11px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer;flex-shrink:0}
+.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;cursor:pointer}
+.btnTop{padding:7px 12px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:11px;margin-left:4px}
+.card{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:14px;margin-bottom:12px}
+.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px}
+.cryptoBox{background:#0a0e14;padding:10px 12px;border-radius:14px;min-width:95px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer}
 .cryptoON{border-color:#00ffb4!important;background:rgba(0,255,180,.15)!important}
 .tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36}
-.tabBtn{flex:1;padding:10px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f}
+.tabBtn{flex:1;padding:11px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f}
 .tabON{background:#fff!important;color:#000!important}
-.label{color:#9fb0bf;font-size:11px;margin:12px 0 5px;display:block;font-weight:600}
-.mmGroup,.netGroup{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
-.mmBtn{padding:9px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:11px;font-weight:600}
-.mmON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.netBtn{padding:6px 11px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:10px}
+.label{color:#9fb0bf;font-size:12px;margin:12px 0 6px;display:block;font-weight:700}
+.mmGroup,.netGroup{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.mmBtn{padding:10px 14px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:13px;font-weight:600}
+.mmON{background:#fff!important;color:#000!important;border-color:#fff!important}
+.netBtn{padding:7px 12px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:11px}
 .netON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.row{display:flex;gap:7px;margin-top:7px}
-.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:12px;padding:12px;color:#fff;width:100%;outline:none}
+.row{display:flex;gap:8px;margin-top:8px}
+.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:12px;color:#fff;width:100%;outline:none}
 .sel:focus,.inp:focus{border-color:#00ffb4}
-.sel{max-width:125px}
-.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900;margin-top:12px;font-size:14px}
-.mainBtn:disabled{background:#2a3a4a;color:#5a6b7d}
-.swap{width:46px;height:46px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:14px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:20px;font-weight:900}
-.rate{text-align:center;margin:10px 0;color:#00ffb4;font-size:10px;font-weight:700;background:rgba(0,255,180,.08);padding:7px;border-radius:8px}
-.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:10px;padding:10px;margin-top:10px;font-size:11px;color:#9fb0bf}
-.line{display:flex;justify-content:space-between;margin-top:6px}
+.sel{max-width:140px}
+.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:15px;border-radius:14px;font-weight:900;margin-top:12px;font-size:15px}
+.mainBtn:disabled{background:#223040;color:#5a6e82}
+.swap{width:44px;height:44px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:14px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:20px;font-weight:900}
+.rate{text-align:center;margin:10px 0;color:#00ffb4;font-size:11px;font-weight:700;background:rgba(0,255,180,.08);padding:8px;border-radius:10px}
+.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:12px;padding:10px;margin-top:10px;font-size:12px;color:#9fb0bf}
+.line{display:flex;justify-content:space-between;margin-top:7px}
 .total{color:#00ffb4}
-.navBar{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);width:calc(100% - 16px);max-width:500px;background:#0e141e;border:1px solid #2a3a4a;border-radius:20px;display:flex;justify-content:space-around;padding:6px 0;z-index:999}
-.navItem{font-size:9px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:5px 12px;border-radius:10px}
+.navBar{position:fixed;bottom:10px;left:10px;right:10px;background:#0e141e;border:1px solid #2a3a4a;border-radius:22px;display:flex;justify-content:space-around;padding:8px 0;z-index:9999}
+.navItem{font-size:10px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:6px 12px;border-radius:12px}
 .navON{color:#00ffb4!important;background:rgba(0,255,180,.12)}
 .sec{display:none}.secON{display:block}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:99999;padding:14px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:99999;padding:16px}
 .modal.show{display:flex}
-.box{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:16px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
-.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:11px;border-radius:12px;margin-top:8px}
-.error{color:#ff5c5c;font-size:10px;margin-top:5px;min-height:12px}
-.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:11px;margin-top:8px;font-size:11px}
-.status{padding:3px 8px;border-radius:20px;font-size:9px;font-weight:800}
-.st-pending{background:#ffcc66;color:#000}.st-success{background:#00ffb4;color:#000}.st-failed{background:#ff3b3b;color:#fff}
-.qrWrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;padding:14px;border-radius:14px;margin:10px auto}
-.actionBtn{flex:1;padding:9px;border-radius:10px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-weight:700;font-size:11px}
-.actionBtn.primary{background:#00ffb4;color:#000;border-color:#00ffb4}
-.adminStat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.statBox{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:10px;text-align:center}
-.statBox b{font-size:18px;color:#00ffb4}
+.box{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:18px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
+.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:12px;border-radius:14px;margin-top:8px}
+.error{color:#ff5c5c;font-size:11px;margin-top:6px;min-height:12px}
+.empty{color:#8da0b1;font-size:13px;text-align:center;padding:15px}
+.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:12px;margin-top:8px;font-size:12px}
+.status{padding:4px 9px;border-radius:20px;font-size:9px;font-weight:800}
+.st-pending{background:#ffcc66;color:#000}.st-success{background:#00ffb4;color:#000}
+.qrWrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;padding:14px;border-radius:14px;margin:12px auto}
+.adminGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.stat{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:10px;text-align:center}
+.stat b{color:#00ffb4;font-size:16px}
 </style>
 </head>
 <body>
-<div class="top"><div class="logo" id="logo">ART ZEDMO</div><div><button class="btnTop" id="bIns">Inscription</button><button class="btnTop" id="bKyc">KYC</button><button class="btnTop" id="bAdmin" style="border-color:#ffcc66;color:#ffcc66">ADMIN</button></div></div>
+
+<div class="top">
+<div class="logo" id="logoBtn">ART ZEDMO</div>
+<div>
+<button class="btnTop" id="bIns">Inscription</button>
+<button class="btnTop" id="bKyc">KYC</button>
+<button class="btnTop" id="bAdmin" style="border-color:#ffcc66;color:#ffcc66">ADMIN</button>
+</div>
+</div>
 
 <div id="sE" class="sec secON">
 <div class="card">
-<div style="text-align:center;color:#6b7f8f;font-size:10px">SOLDE TOTAL</div>
-<div id="totalBalance" style="text-align:center;font-size:22px;font-weight:900">0 FCFA</div>
-<div class="cryptoRow" id="cryptoRow"><div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div><div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div><div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div></div>
-<div style="text-align:center;margin-top:8px"><span id="kSt" style="background:#ff3b3b;color:#fff;padding:3px 8px;border-radius:20px;font-size:9px">KYC Non vérifié</span><span id="uSt" style="font-size:10px;color:#7d8fa0;margin-left:5px">Non connecté</span></div>
+<div style="text-align:center;color:#6b7f8f;font-size:11px">SOLDE TOTAL</div>
+<div id="totalBalance" style="text-align:center;font-size:24px;font-weight:900">0 FCFA</div>
+<div class="cryptoRow">
+<div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div>
+<div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div>
+<div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div>
 </div>
+<div style="text-align:center;margin-top:8px">
+<span id="kSt" style="background:#ff3b3b;color:#fff;padding:3px 9px;border-radius:20px;font-size:10px">KYC Non vérifié</span>
+<span id="uSt" style="font-size:11px;color:#7d8fa0;margin-left:6px">Non connecté</span>
+</div>
+</div>
+
 <div class="card">
 <div class="tabs"><button id="tBuy" class="tabBtn tabON">Acheter</button><button id="tSell" class="tabBtn">Vendre</button></div>
 <span class="label">Moyen de paiement</span>
-<div class="mmGroup" id="mmGroup"><button class="mmBtn mmON" data-mm="Orange Money">Orange</button><button class="mmBtn" data-mm="MTN MoMo">MTN</button><button class="mmBtn" data-mm="Wave">Wave</button><button class="mmBtn" data-mm="Moov Money">Moov</button><button class="mmBtn" data-mm="Celtiis Cash">Celtiis</button><button class="mmBtn" data-mm="Airtel Money">Airtel</button></div>
+<div class="mmGroup" id="mmGroup">
+<button class="mmBtn mmON" data-mm="Orange Money">Orange</button>
+<button class="mmBtn" data-mm="MTN MoMo">MTN</button>
+<button class="mmBtn" data-mm="Wave">Wave</button>
+<button class="mmBtn" data-mm="Moov Money">Moov</button>
+<button class="mmBtn" data-mm="Celtiis Cash">Celtiis</button>
+<button class="mmBtn" data-mm="Airtel Money">Airtel</button>
+</div>
+
 <span class="label">Numéro + Pays</span>
-<div class="row"><select id="country" class="sel"><option value="+229">Bénin +229</option><option value="+225">CIV +225</option><option value="+221">Sénégal +221</option><option value="+226">Burkina +226</option><option value="+228">Togo +228</option><option value="+223">Mali +223</option><option value="+227">Niger +227</option><option value="+224">Guinée +224</option><option value="+237">Cameroun +237</option><option value="+242">Congo +242</option><option value="+241">Gabon +241</option><option value="+233">Ghana +233</option><option value="+234">Nigeria +234</option></select><input id="phone" class="inp" inputmode="tel" placeholder="01 XX XX XX"></div>
+<div class="row">
+<select id="country" class="sel">
+<option value="+229">Bénin +229</option>
+<option value="+225">CIV +225</option>
+<option value="+221">Sénégal +221</option>
+<option value="+226">Burkina +226</option>
+<option value="+228">Togo +228</option>
+<option value="+223">Mali +223</option>
+<option value="+227">Niger +227</option>
+<option value="+224">Guinée +224</option>
+<option value="+237">Cameroun +237</option>
+</select>
+<input id="phone" class="inp" value="01 96 58 73 03" inputmode="tel" placeholder="Numéro">
+</div>
 <div id="phoneError" class="error"></div>
+
 <span id="lPay" class="label">Vous payez (FCFA)</span>
-<div class="row"><div class="sel" style="max-width:65px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" value="10000"></div>
+<div class="row"><div class="sel" style="max-width:70px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" value="50000"></div>
 <div id="amountError" class="error"></div>
+
 <div class="swap" id="sw">↕</div>
-<span class="label">Vous recevez</span>
-<div class="row"><select id="cSel" class="sel" style="max-width:100%"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
-<div class="row"><input id="cAmt" class="inp" readonly style="font-weight:800;background:#070a0f"></div>
-<div class="netGroup" id="netGroup"><button class="netBtn netON" data-net="TRC20">TRC20</button><button class="netBtn" data-net="ERC20">ERC20</button><button class="netBtn" data-net="BEP20">BEP20</button></div>
-<div class="walletBox"><span class="label">Adresse wallet réception</span><input id="wallet" class="inp" placeholder="T... ou 0x..."><div id="walletError" class="error"></div></div>
+
+<span id="receiveLabel" class="label">Vous recevez</span>
+<div class="row"><select id="cSel" class="sel"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
+<div class="row"><input id="cAmt" class="inp" readonly style="font-weight:800"></div>
+
+<div class="netGroup" id="netGroup">
+<button class="netBtn netON" data-net="TRC20">TRC20</button>
+<button class="netBtn" data-net="ERC20">ERC20</button>
+<button class="netBtn" data-net="BEP20">BEP20</button>
+</div>
+
+<div class="walletBox">
+<span class="label">Adresse wallet réception</span>
+<input id="wallet" class="inp" placeholder="T... ou 0x...">
+<div id="walletError" class="error"></div>
+</div>
+
 <div class="rate" id="rate">1 USDT = 605 FCFA | TRC20</div>
-<div class="feesBox"><div class="line"><span>Montant</span><b id="baseTxt">10 000 FCFA</b></div><div class="line"><span>Frais (2%)</span><b id="fTxt">200 FCFA</b></div><div class="line"><span id="totalLabel">Total à payer</span><b id="totTxt" class="total">10 200 FCFA</b></div></div>
+<div class="feesBox">
+<div class="line"><span>Montant</span><b id="baseTxt">50 000 FCFA</b></div>
+<div class="line"><span>Frais (2%)</span><b id="fTxt">1 000 FCFA</b></div>
+<div class="line"><span id="totalLabel">Total à payer</span><b id="totTxt" class="total">51 000 FCFA</b></div>
+</div>
+
 <button class="mainBtn" id="btnConf">Confirmer la transaction</button>
 </div>
 </div>
 
 <div id="sP" class="sec">
-<div class="card"><div style="display:flex;justify-content:space-between"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div><div id="portfolioList" style="margin-top:10px"></div></div>
-<div class="card" id="walletDetail" style="display:none"><h3 id="wdTitle">Dépôt</h3><div style="text-align:center;margin-top:6px"><small id="wdAddr" style="color:#8da0b1;word-break:break-all;font-size:11px"></small></div><div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:700;font-size:11px">QR Code de dépôt</small></div><div style="display:flex;gap:8px"><button class="actionBtn" id="btnCopyAddr">Copier</button><button class="actionBtn primary" id="btnShareAddr">Partager</button></div><div style="margin-top:12px"><span class="label">Retrait vers autre wallet</span><input id="withdrawAmt" class="inp" type="number" placeholder="Montant"><input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:6px"><div id="withdrawError" class="error"></div><button class="mainBtn" id="btnWithdraw">Demander retrait</button></div><button class="closeBtn" id="closeWD">Fermer</button></div>
+<div class="card">
+<div style="display:flex;justify-content:space-between"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div>
+<div id="portfolioList" style="margin-top:10px"></div>
+</div>
+<div class="card" id="walletDetail" style="display:none">
+<h3 id="wdTitle">Dépôt</h3>
+<small id="wdAddr" style="color:#8da0b1;word-break:break-all;display:block;text-align:center;margin-top:6px"></small>
+<div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:800">QR Code dépôt</small></div>
+<div style="display:flex;gap:8px"><button class="btnTop" id="btnCopyAddr" style="flex:1">Copier adresse</button><button class="btnTop" id="btnShareAddr" style="flex:1">Partager</button></div>
+<div style="margin-top:12px">
+<span class="label">Retrait vers autre wallet</span>
+<input id="withdrawAmt" class="inp" type="number" placeholder="Montant crypto">
+<input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:6px">
+<div id="withdrawError" class="error"></div>
+<button class="mainBtn" id="btnWithdraw">Demander retrait</button>
+</div>
+<button class="closeBtn" id="closeWD">Fermer</button>
+</div>
 </div>
 
-<div id="sH" class="sec"><div class="card"><div style="display:flex;justify-content:space-between"><h3>Historique</h3><button class="btnTop" id="clearHist">Effacer</button></div><div id="history"></div></div></div><!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ZEDMO V3 - Admin</title>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
-body{background:#070a0f;color:#fff;padding:12px;padding-bottom:110px;max-width:500px;margin:auto}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;font-size:18px;user-select:none}
-.btnTop{padding:7px 11px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:10px;margin-left:4px}
-.card{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:14px;margin-bottom:12px}
-.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
-.cryptoBox{background:#0a0e14;padding:11px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer;flex-shrink:0}
-.cryptoON{border-color:#00ffb4!important;background:rgba(0,255,180,.15)!important}
-.tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36}
-.tabBtn{flex:1;padding:10px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f}
-.tabON{background:#fff!important;color:#000!important}
-.label{color:#9fb0bf;font-size:11px;margin:12px 0 5px;display:block;font-weight:600}
-.mmGroup,.netGroup{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
-.mmBtn{padding:9px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:11px;font-weight:600}
-.mmON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.netBtn{padding:6px 11px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:10px}
-.netON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.row{display:flex;gap:7px;margin-top:7px}
-.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:12px;padding:12px;color:#fff;width:100%;outline:none}
-.sel:focus,.inp:focus{border-color:#00ffb4}
-.sel{max-width:125px}
-.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900;margin-top:12px;font-size:14px}
-.mainBtn:disabled{background:#2a3a4a;color:#5a6b7d}
-.swap{width:46px;height:46px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:14px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:20px;font-weight:900}
-.rate{text-align:center;margin:10px 0;color:#00ffb4;font-size:10px;font-weight:700;background:rgba(0,255,180,.08);padding:7px;border-radius:8px}
-.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:10px;padding:10px;margin-top:10px;font-size:11px;color:#9fb0bf}
-.line{display:flex;justify-content:space-between;margin-top:6px}
-.total{color:#00ffb4}
-.navBar{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);width:calc(100% - 16px);max-width:500px;background:#0e141e;border:1px solid #2a3a4a;border-radius:20px;display:flex;justify-content:space-around;padding:6px 0;z-index:999}
-.navItem{font-size:9px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:5px 12px;border-radius:10px}
-.navON{color:#00ffb4!important;background:rgba(0,255,180,.12)}
-.sec{display:none}.secON{display:block}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:99999;padding:14px}
-.modal.show{display:flex}
-.box{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:16px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
-.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:11px;border-radius:12px;margin-top:8px}
-.error{color:#ff5c5c;font-size:10px;margin-top:5px;min-height:12px}
-.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:11px;margin-top:8px;font-size:11px}
-.status{padding:3px 8px;border-radius:20px;font-size:9px;font-weight:800}
-.st-pending{background:#ffcc66;color:#000}.st-success{background:#00ffb4;color:#000}.st-failed{background:#ff3b3b;color:#fff}
-.qrWrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;padding:14px;border-radius:14px;margin:10px auto}
-.actionBtn{flex:1;padding:9px;border-radius:10px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-weight:700;font-size:11px}
-.actionBtn.primary{background:#00ffb4;color:#000;border-color:#00ffb4}
-.adminStat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
-.statBox{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:10px;text-align:center}
-.statBox b{font-size:18px;color:#00ffb4}
-</style>
-</head>
-<body>
-<div class="top"><div class="logo" id="logo">ART ZEDMO</div><div><button class="btnTop" id="bIns">Inscription</button><button class="btnTop" id="bKyc">KYC</button><button class="btnTop" id="bAdmin" style="border-color:#ffcc66;color:#ffcc66">ADMIN</button></div></div>
+<div id="sH" class="sec"><div class="card"><h3>Historique</h3><div id="history"><div class="empty">Aucune transaction</div></div></div></div>
 
-<div id="sE" class="sec secON">
+<div id="sPr" class="sec">
 <div class="card">
-<div style="text-align:center;color:#6b7f8f;font-size:10px">SOLDE TOTAL</div>
-<div id="totalBalance" style="text-align:center;font-size:22px;font-weight:900">0 FCFA</div>
-<div class="cryptoRow" id="cryptoRow"><div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div><div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div><div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div></div>
-<div style="text-align:center;margin-top:8px"><span id="kSt" style="background:#ff3b3b;color:#fff;padding:3px 8px;border-radius:20px;font-size:9px">KYC Non vérifié</span><span id="uSt" style="font-size:10px;color:#7d8fa0;margin-left:5px">Non connecté</span></div>
+<h3>Profil & KYC</h3>
+<div style="margin-top:10px">
+<div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div>
+<div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div>
+<div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div>
+<div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div>
+</div>
+<button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button>
+</div>
+</div><div id="sA" class="sec">
+<div class="card"><h3>🛡️ Panel Administrateur</h3>
+<div class="adminGrid">
+<div class="stat"><small>Volume</small><br><b id="aVol">0 FCFA</b></div>
+<div class="stat"><small>Tx</small><br><b id="aCount">0</b></div>
+<div class="stat"><small>Users</small><br><b id="aUsers">0</b></div>
+<div class="stat"><small>Attente</small><br><b id="aPend">0</b></div>
+</div>
 </div>
 <div class="card">
-<div class="tabs"><button id="tBuy" class="tabBtn tabON">Acheter</button><button id="tSell" class="tabBtn">Vendre</button></div>
-<span class="label">Moyen de paiement</span>
-<div class="mmGroup" id="mmGroup"><button class="mmBtn mmON" data-mm="Orange Money">Orange</button><button class="mmBtn" data-mm="MTN MoMo">MTN</button><button class="mmBtn" data-mm="Wave">Wave</button><button class="mmBtn" data-mm="Moov Money">Moov</button><button class="mmBtn" data-mm="Celtiis Cash">Celtiis</button><button class="mmBtn" data-mm="Airtel Money">Airtel</button></div>
-<span class="label">Numéro + Pays</span>
-<div class="row"><select id="country" class="sel"><option value="+229">Bénin +229</option><option value="+225">CIV +225</option><option value="+221">Sénégal +221</option><option value="+226">Burkina +226</option><option value="+228">Togo +228</option><option value="+223">Mali +223</option><option value="+227">Niger +227</option><option value="+224">Guinée +224</option><option value="+237">Cameroun +237</option><option value="+242">Congo +242</option><option value="+241">Gabon +241</option><option value="+233">Ghana +233</option><option value="+234">Nigeria +234</option></select><input id="phone" class="inp" inputmode="tel" placeholder="01 XX XX XX"></div>
-<div id="phoneError" class="error"></div>
-<span id="lPay" class="label">Vous payez (FCFA)</span>
-<div class="row"><div class="sel" style="max-width:65px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" value="10000"></div>
-<div id="amountError" class="error"></div>
-<div class="swap" id="sw">↕</div>
-<span class="label">Vous recevez</span>
-<div class="row"><select id="cSel" class="sel" style="max-width:100%"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
-<div class="row"><input id="cAmt" class="inp" readonly style="font-weight:800;background:#070a0f"></div>
-<div class="netGroup" id="netGroup"><button class="netBtn netON" data-net="TRC20">TRC20</button><button class="netBtn" data-net="ERC20">ERC20</button><button class="netBtn" data-net="BEP20">BEP20</button></div>
-<div class="walletBox"><span class="label">Adresse wallet réception</span><input id="wallet" class="inp" placeholder="T... ou 0x..."><div id="walletError" class="error"></div></div>
-<div class="rate" id="rate">1 USDT = 605 FCFA | TRC20</div>
-<div class="feesBox"><div class="line"><span>Montant</span><b id="baseTxt">10 000 FCFA</b></div><div class="line"><span>Frais (2%)</span><b id="fTxt">200 FCFA</b></div><div class="line"><span id="totalLabel">Total à payer</span><b id="totTxt" class="total">10 200 FCFA</b></div></div>
-<button class="mainBtn" id="btnConf">Confirmer la transaction</button>
+<h3>Taux & Frais Live</h3>
+<div class="row"><input id="aRateUSDT" class="inp" type="number" placeholder="USDT"><input id="aRateBTC" class="inp" type="number" placeholder="BTC"></div>
+<div class="row" style="margin-top:6px"><input id="aRateETH" class="inp" type="number" placeholder="ETH"><input id="aFees" class="inp" type="number" step="0.001" placeholder="Frais 0.02"></div>
+<button class="mainBtn" id="aSaveRates">Sauvegarder taux</button>
 </div>
+<div class="card"><h3>KYC en attente</h3><div id="aKycList"></div></div>
+<div class="card">
+<div style="display:flex;justify-content:space-between"><h3>Toutes demandes</h3><button class="btnTop" id="aExport">Export JSON</button></div>
+<div id="aHistList" style="margin-top:8px"></div>
 </div>
-
-<div id="sP" class="sec">
-<div class="card"><div style="display:flex;justify-content:space-between"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div><div id="portfolioList" style="margin-top:10px"></div></div>
-<div class="card" id="walletDetail" style="display:none"><h3 id="wdTitle">Dépôt</h3><div style="text-align:center;margin-top:6px"><small id="wdAddr" style="color:#8da0b1;word-break:break-all;font-size:11px"></small></div><div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:700;font-size:11px">QR Code de dépôt</small></div><div style="display:flex;gap:8px"><button class="actionBtn" id="btnCopyAddr">Copier</button><button class="actionBtn primary" id="btnShareAddr">Partager</button></div><div style="margin-top:12px"><span class="label">Retrait vers autre wallet</span><input id="withdrawAmt" class="inp" type="number" placeholder="Montant"><input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:6px"><div id="withdrawError" class="error"></div><button class="mainBtn" id="btnWithdraw">Demander retrait</button></div><button class="closeBtn" id="closeWD">Fermer</button></div>
+<div class="card">
+<h3>Adresses plateforme</h3>
+<input id="aAddrTRC" class="inp" placeholder="USDT TRC20">
+<input id="aAddrERC" class="inp" placeholder="ERC20/BEP20" style="margin-top:6px">
+<input id="aAddrBTC" class="inp" placeholder="BTC" style="margin-top:6px">
+<button class="mainBtn" id="aSaveAddr">Sauvegarder adresses</button>
+</div>
+<button class="closeBtn" id="aLogout">Quitter Admin</button>
 </div>
 
-<div id="sH" class="sec"><div class="card"><div style="display:flex;justify-content:space-between"><h3>Historique</h3><button class="btnTop" id="clearHist">Effacer</button></div><div id="history"></div></div></div>
-<div id="sPr" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:10px"><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div></div><button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button></div></div>
-<div id="sPr" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:10px"><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div></div><button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button></div></div>
+<div class="navBar">
+<div id="nE" class="navItem navON">↕<br>Echange</div>
+<div id="nP" class="navItem">💼<br>Portefeuille</div>
+<div id="nH" class="navItem">🕒<br>Historique</div>
+<div id="nPr" class="navItem">👤<br>Profil</div>
+<div id="nA" class="navItem" style="display:none">🛡️<br>Admin</div>
+</div>
+
+<div class="modal" id="mAuth"><div class="box"><h3>Inscription</h3><input id="aName" class="inp" placeholder="Nom complet" style="margin-top:10px"><input id="aPhone" class="inp" placeholder="Téléphone" value="01 96 58 73 03" style="margin-top:8px"><div id="authError" class="error"></div><button class="mainBtn" id="doAuth">S'inscrire</button><button class="closeBtn" id="cAuth">Fermer</button></div></div>
+<div class="modal" id="mKyc"><div class="box"><h3>KYC</h3><input id="kNum" class="inp" placeholder="Numéro pièce" style="margin-top:10px"><input id="kType" class="inp" placeholder="CNI / Passeport" style="margin-top:6px"><div id="kycError" class="error"></div><button class="mainBtn" id="doKyc">Envoyer KYC</button><button class="closeBtn" id="cKyc">Fermer</button></div></div>
+<div class="modal" id="mConfirm"><div class="box"><h3>Résumé</h3><div id="confirmDetails" style="font-size:12px;color:#aebdca;margin-top:12px;line-height:1.8"></div><button class="mainBtn" id="finalConfirm">Confirmer & WhatsApp</button><button class="closeBtn" id="cancelConfirm">Annuler</button></div></div>
+<div class="modal" id="mAdminLogin"><div class="box"><h3>Admin Login</h3><input id="adminPass" class="inp" type="password" placeholder="ART2026" style="margin-top:10px"><div id="adminError" class="error"></div><button class="mainBtn" id="doAdminLogin">Entrer</button><button class="closeBtn" id="cAdminLogin">Fermer</button></div></div>
+
+<script>
+const CONFIG = {
+  WA: "2290196587303",
+  ADMIN_PASS: "ART2026",
+  rates: { USDT: 605, BTC: 62000000, ETH: 2100000 },
+  fees: 0.02,
+  minAmount: 1000,
+  wallets: {
+    USDT_TRC20: "TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE",
+    USDT_ERC20: "0x71C7656EC7ab88b098defB751B7401B5f6d8976F",
+    BTC: "bc1qxy2kqy2kqy2kqy2kqy2kqy2kqy2kqy2kqy2kqy"
+  }
+};
+
+const D = document;
+let STATE = { crypto: "USDT", mode: "buy", mm: "Orange Money", net: "TRC20" };
+
+function $(s){ return D.querySelector(s); }
+function money(v){ return Math.round(v).toLocaleString("fr-FR")+" FCFA"; }
+function normPhone(v){ return v.replace(/\D/g,""); }
+function validPhone(v){ let p=normPhone(v); return p.length>=8&&p.length<=15; }
+function getUser(){ try{return JSON.parse(localStorage.getItem("art_user"));}catch{return null;} }
+function getHist(){ try{return JSON.parse(localStorage.getItem("art_history"))||[];}catch{return [];} }
+function saveHist(h){ localStorage.setItem("art_history", JSON.stringify(h.slice(0,200))); }
+function getBal(){ try{return JSON.parse(localStorage.getItem("art_bal"))||{USDT:0,BTC:0,ETH:0};}catch{return {USDT:0,BTC:0,ETH:0};} }
+function saveBal(b){ localStorage.setItem("art_bal", JSON.stringify(b)); }
+function getRates(){ try{return JSON.parse(localStorage.getItem("art_rates"))||CONFIG.rates;}catch{return CONFIG.rates;} }
+function getFees(){ return parseFloat(localStorage.getItem("art_fees")||CONFIG.fees); }
+function getWallets(){ try{return JSON.parse(localStorage.getItem("art_wallets"))||CONFIG.wallets;}catch{return CONFIG.wallets;} }
+
+function go(id){
+  D.querySelectorAll(".sec").forEach(s=>s.classList.remove("secON"));
+  $("#s"+id).classList.add("secON");
+  D.querySelectorAll(".navItem").forEach(n=>n.classList.remove("navON"));
+  $("#n"+id).classList.add("navON");
+  if(id==="P") renderPortfolio();
+  if(id==="H") renderHistory();
+  if(id==="Pr") renderProfile();
+  if(id==="A") renderAdmin();
+}
+
+$("#nE").onclick=()=>go("E");
+$("#nP").onclick=()=>go("P");
+$("#nH").onclick=()=>go("H");
+$("#nPr").onclick=()=>go("Pr");
+$("#nA").onclick=()=>go("A");
+
+$("#logoBtn").onclick=()=>{
+  let c=parseInt($("#logoBtn").dataset.c||"0")+1;
+  $("#logoBtn").dataset.c=c;
+  if(c>=3){ $("#mAdminLogin").classList.add("show"); $("#logoBtn").dataset.c=0; }
+  setTimeout(()=>$("#logoBtn").dataset.c=0,1200);
+};
+
+$("#bAdmin").onclick=()=>$("#mAdminLogin").classList.add("show");
+$("#cAdminLogin").onclick=()=>$("#mAdminLogin").classList.remove("show");
+
+$("#doAdminLogin").onclick=()=>{
+  if($("#adminPass").value===CONFIG.ADMIN_PASS){
+    localStorage.setItem("art_is_admin","1");
+    $("#nA").style.display="flex";
+    $("#mAdminLogin").classList.remove("show");
+    go("A");
+  }else{
+    $("#adminError").innerText="Mot de passe incorrect";
+  }
+};
+
+$("#aLogout").onclick=()=>{
+  localStorage.removeItem("art_is_admin");
+  $("#nA").style.display="none";
+  go("E");
+};
+
+if(localStorage.getItem("art_is_admin")==="1"){
+  $("#nA").style.display="flex";
+}
+
+D.querySelectorAll(".cryptoBox").forEach(box=>{
+  box.onclick=()=>{
+    D.querySelectorAll(".cryptoBox").forEach(x=>x.classList.remove("cryptoON"));
+    box.classList.add("cryptoON");
+    STATE.crypto=box.dataset.c;
+    $("#cSel").value=STATE.crypto;
+    updateNet();
+    calc();
+  };
+});
+
+D.querySelectorAll("#mmGroup.mmBtn").forEach(btn=>{
+  btn.onclick=()=>{
+    D.querySelectorAll("#mmGroup.mmBtn").forEach(x=>x.classList.remove("mmON"));
+    btn.classList.add("mmON");
+    STATE.mm=btn.dataset.mm;
+  };
+});
+
+D.querySelectorAll("#netGroup.netBtn").forEach(btn=>{
+  btn.onclick=()=>{
+    D.querySelectorAll("#netGroup.netBtn").forEach(x=>x.classList.remove("netON"));
+    btn.classList.add("netON");
+    STATE.net=btn.dataset.net;
+    calc();
+  };
+});
+
+function setMode(m){
+  STATE.mode=m;
+  $("#tBuy").className=m==="buy"?"tabBtn tabON":"tabBtn";
+  $("#tSell").className=m==="sell"?"tabBtn tabON":"tabBtn";
+  if(m==="buy"){
+    $("#lPay").innerText="Vous payez (FCFA)";
+    $("#totalLabel").innerText="Total à payer";
+  }else{
+    $("#lPay").innerText="Vous vendez (FCFA)";
+    $("#totalLabel").innerText="Montant après frais";
+  }
+  calc();
+}
+
+$("#tBuy").onclick=()=>setMode("buy");
+$("#tSell").onclick=()=>setMode("sell");
+
+$("#sw").onclick=()=>{
+  setMode(STATE.mode==="buy"?"sell":"buy");
+  let a=$("#amt").value;
+  let c=$("#cAmt").value;
+  $("#amt").value=c;
+  $("#cAmt").value=a;
+  calc();
+};
+
+function updateNet(){
+  let btns=D.querySelectorAll("#netGroup.netBtn");
+  let r=getRates();
+  if(STATE.crypto==="BTC"){
+    btns.forEach(b=>b.style.display="none");
+    STATE.net="BTC";
+    $("#rate").innerText=`1 BTC = ${r.BTC.toLocaleString("fr-FR")} FCFA`;
+  }else if(STATE.crypto==="ETH"){
+    btns.forEach(b=>b.style.display=b.dataset.net==="ERC20"?"inline-block":"none");
+    STATE.net="ERC20";
+    D.querySelectorAll("#netGroup.netBtn").forEach(x=>x.classList.remove("netON"));
+    D.querySelector('[data-net="ERC20"]').classList.add("netON");
+    $("#rate").innerText=`1 ETH = ${r.ETH.toLocaleString("fr-FR")} FCFA | ERC20`;
+  }else{
+    btns.forEach(b=>b.style.display="inline-block");
+    $("#rate").innerText=`1 USDT = ${r.USDT.toLocaleString("fr-FR")} FCFA | ${STATE.net}`;
+  }
+}
+
+function calc(){
+  let rates=getRates();
+  let fees=getFees();
+  let fiat=parseFloat($("#amt").value)||0;
+  let rate=rates[STATE.crypto]||1;
+  if(STATE.mode==="buy"){
+    let cr=fiat/rate;
+    $("#cAmt").value=fiat?cr.toFixed(STATE.crypto==="BTC"?8:STATE.crypto==="ETH"?6:2):"";
+    $("#baseTxt").innerText=money(fiat);
+    $("#fTxt").innerText=money(fiat*fees);
+    $("#totTxt").innerText=money(fiat+fiat*fees);
+  }else{
+    let fc=fiat*rate;
+    $("#cAmt").value=fiat?fc.toFixed(0):"";
+    $("#baseTxt").innerText=fiat+" "+STATE.crypto;
+    $("#fTxt").innerText=money(fc*fees);
+    $("#totTxt").innerText=money(fc-fc*fees);
+  }
+  validate();
+}
+
+$("#amt").oninput=calc;
+$("#cSel").onchange=function(){
+  STATE.crypto=this.value;
+  D.querySelectorAll(".cryptoBox").forEach(x=>x.classList.toggle("cryptoON",x.dataset.c===STATE.crypto));
+  updateNet();
+  calc();
+};
+
+function validate(){
+  let ok=true;
+  let amt=parseFloat($("#amt").value)||0;
+  let phone=$("#phone").value.trim();
+  let wal=$("#wallet").value.trim();
+  $("#amountError").innerText="";
+  $("#phoneError").innerText="";
+  $("#walletError").innerText="";
+  if(STATE.mode==="buy"&&amt>0&&amt<CONFIG.minAmount){
+    $("#amountError").innerText=`Minimum ${CONFIG.minAmount} FCFA`;
+    ok=false;
+  }
+  if(phone&&!validPhone(phone)){
+    $("#phoneError").innerText="Numéro invalide";
+    ok=false;
+  }
+  if(wal&&wal.length>0&&wal.length<10){
+    $("#walletError").innerText="Adresse trop courte";
+    ok=false;
+  }
+  $("#btnConf").disabled=!ok||amt===0;
+  return ok;
+}
+
+$("#phone").oninput=validate;
+$("#wallet").oninput=validate;
+
+function validateFull(){
+  validate();
+  let a=parseFloat($("#amt").value)||0;
+  let p=$("#phone").value.trim();
+  let w=$("#wallet").value.trim();
+  if(STATE.mode==="buy"&&a<CONFIG.minAmount) return false;
+  if(!validPhone(p)) return false;
+  if(w.length<10) return false;
+  return true;
+}
+
+$("#bIns").onclick=()=>$("#mAuth").classList.add("show");
+$("#cAuth").onclick=()=>$("#mAuth").classList.remove("show");
+
+$("#doAuth").onclick=()=>{
+  let n=$("#aName").value.trim();
+  let p=$("#aPhone").value.trim();
+  $("#authError").innerText="";
+  if(n.length<2){ $("#authError").innerText="Nom requis"; return; }
+  if(!validPhone(p)){ $("#authError").innerText="Tel invalide"; return; }
+  localStorage.setItem("art_user", JSON.stringify({name:n, phone:p}));
+  let users=JSON.parse(localStorage.getItem("art_users")||"[]");
+  users.push({name:n, phone:p});
+  localStorage.setItem("art_users", JSON.stringify(users));
+  updateUser();
+  $("#mAuth").classList.remove("show");
+};
+
+$("#bKyc").onclick=()=>$("#mKyc").classList.add("show");
+$("#cKyc").onclick=()=>$("#mKyc").classList.remove("show");
+
+$("#doKyc").onclick=()=>{
+  let num=$("#kNum").value.trim();
+  if(num.length<4){ $("#kycError").innerText="Numéro invalide"; return; }
+  localStorage.setItem("art_kyc", JSON.stringify({status:"pending", num:num}));
+  updateUser();
+  $("#mKyc").classList.remove("show");
+};
+
+function updateUser(){
+  let u=getUser();
+  if(u){
+    $("#uSt").innerText="✔ "+u.name;
+    $("#pN").innerText=u.name;
+    $("#pP").innerText=u.phone;
+  }else{
+    $("#uSt").innerText="Non connecté";
+    $("#pN").innerText="Non connecté";
+    $("#pP").innerText="-";
+  }
+  let k=localStorage.getItem("art_kyc");
+  if(k){
+    let kj=JSON.parse(k);
+    $("#pK").innerText=kj.status==="ok"?"Vérifié ✔":"En attente";
+    $("#kSt").innerText=kj.status==="ok"?"KYC Vérifié ✔":"KYC En attente";
+    $("#kSt").style.background=kj.status==="ok"?"#00ffb4":"#ffcc66";
+    $("#kSt").style.color="#000";
+  }else{
+    $("#pK").innerText="Non vérifié";
+    $("#kSt").innerText="KYC Non vérifié";
+    $("#kSt").style.background="#ff3b3b";
+    $("#kSt").style.color="#fff";
+  }
+  $("#pT").innerText=getHist().length;
+  calcBalance();
+}
+
+function calcBalance(){
+  let bal=getBal();
+  let r=getRates();
+  let tot=0;
+  Object.keys(bal).forEach(k=>{ tot+=bal[k]*(r[k]||0); });
+  $("#totalBalance").innerText=money(tot);
+}
+
+function renderPortfolio(){
+  let bal=getBal();
+  let r=getRates();
+  let c=$("#portfolioList");
+  c.innerHTML="";
+  ["USDT","BTC","ETH"].forEach(k=>{
+    let v=bal[k]||0;
+    let d=document.createElement("div");
+    d.className="historyItem";
+    d.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div><b>${k}</b><br><small style="color:#8da0b1">${v} ${k} ≈ ${money(v*r[k])}</small></div><div style="display:flex;gap:6px"><button class="btnTop" onclick="openDep('${k}')">Dépôt</button><button class="btnTop" style="border-color:#ffcc66;color:#ffcc66" onclick="openDep('${k}')">Retrait</button></div></div>`;
+    c.appendChild(d);
+  });
+}
+
+let curDep=null;
+
+function openDep(k){
+  curDep=k;
+  let w=getWallets();
+  let addr=k==="USDT"?w.USDT_TRC20:k==="BTC"?w.BTC:w.USDT_ERC20;
+  if(k==="USDT" && STATE.net==="ERC20") addr=w.USDT_ERC20;
+  $("#wdTitle").innerText=`Dépôt ${k} - ${STATE.net}`;
+  $("#wdAddr").innerText=addr;
+  $("#walletDetail").style.display="block";
+  $("#qrcode").innerHTML="";
+  new QRCode($("#qrcode"),{text:addr,width:150,height:150});
+}
+
+$("#closeWD").onclick=()=>$("#walletDetail").style.display="none";
+$("#btnCopyAddr").onclick=()=>{ navigator.clipboard.writeText($("#wdAddr").innerText); alert("Copié"); };
+$("#btnWithdraw").onclick=()=>{
+  let a=parseFloat($("#withdrawAmt").value)||0;
+  let ad=$("#withdrawAddr").value.trim();
+  if(a<=0||ad.length<10){ $("#withdrawError").innerText="Montant/adresse invalide"; return; }
+  alert(`Retrait ${a} ${curDep} vers ${ad} demandé`);
+  $("#walletDetail").style.display="none";
+};
+$("#btnRefreshBal").onclick=()=>{ calcBalance(); renderPortfolio(); };
+
+$("#btnConf").onclick=()=>{
+  if(!getUser()){ $("#mAuth").classList.add("show"); return; }
+  if(!localStorage.getItem("art_kyc")){ $("#mKyc").classList.add("show"); return; }
+  if(!validateFull()) return;
+  let fees=getFees();
+  let fiat=parseFloat($("#amt").value);
+  let crypto=$("#cAmt").value;
+  let phone=$("#phone").value.trim();
+  let country=$("#country").value;
+  let wallet=$("#wallet").value.trim();
+  let fee=fiat*fees;
+  $("#confirmDetails").innerHTML=`<b>Type:</b> ${STATE.mode.toUpperCase()}<br><b>Crypto:</b> ${crypto} ${STATE.crypto}<br><b>Réseau:</b> ${STATE.net}<br><b>Montant:</b> ${STATE.mode==="buy"?money(fiat):fiat+" "+STATE.crypto}<br><b>Frais:</b> ${money(fee)}<br><b>Total:</b> ${money(STATE.mode==="buy"?fiat+fee:fiat-fee)}<br><b>Moyen:</b> ${STATE.mm}<br><b>Tél:</b> ${country} ${phone}<br><b>Wallet:</b> ${wallet}`;
+  $("#mConfirm").classList.add("show");
+};
+
+$("#cancelConfirm").onclick=()=>$("#mConfirm").classList.remove("show");
+
+$("#finalConfirm").onclick=()=>{
+  let u=getUser();
+  let fees=getFees();
+  let fiat=parseFloat($("#amt").value);
+  let crypto=$("#cAmt").value;
+  let phone=$("#phone").value.trim();
+  let country=$("#country").value;
+  let wallet=$("#wallet").value.trim();
+  let tx={
+    id:"AZ-"+Date.now(),
+    date:new Date().toLocaleString("fr-FR"),
+    mode:STATE.mode,
+    crypto:STATE.crypto,
+    cryptoAmount:STATE.mode==="buy"?crypto:fiat,
+    network:STATE.net,
+    amount:fiat,
+    fee:fiat*fees,
+    total:STATE.mode==="buy"?fiat+fiat*fees:fiat-fiat*fees,
+    paymentMethod:STATE.mm,
+    phone:country+" "+phone,
+    wallet:wallet,
+    status:"En attente",
+    user:u.name
+  };
+  let h=getHist();
+  h.unshift(tx);
+  saveHist(h);
+  if(STATE.mode==="buy"){
+    let bal=getBal();
+    bal[STATE.crypto]=(bal[STATE.crypto]||0)+parseFloat(crypto||0);
+    saveBal(bal);
+  }
+  let msg=`Bonjour ART ZEDMO%0AID:${tx.id}%0A${tx.mode.toUpperCase()} ${fiat} -> ${crypto} ${STATE.crypto} ${STATE.net}%0ATel:${country} ${phone}%0AWallet:${wallet}%0AClient:${u.name}`;
+  $("#mConfirm").classList.remove("show");
+  renderHistory();
+  calcBalance();
+  window.open("https://wa.me/"+CONFIG.WA+"?text="+msg,"_blank");
+};
+
+function renderHistory(){
+  let h=getHist();
+  let c=$("#history");
+  if(h.length===0){ c.innerHTML='<div class="empty">Aucune transaction</div>'; return; }
+  c.innerHTML="";
+  h.forEach(i=>{
+    let d=document.createElement("div");
+    d.className="historyItem";
+    d.innerHTML=`<div style="display:flex;justify-content:space-between"><b>${i.mode.toUpperCase()} ${i.crypto}</b><small>${i.cryptoAmount} ${i.crypto}</small></div><div style="color:#8da0b1">${i.amount} • ${i.paymentMethod}</div><div style="display:flex;justify-content:space-between;margin-top:5px"><small style="color:#5a6b7d">${i.date}</small><span class="status st-pending">${i.status}</span></div>`;
+    c.appendChild(d);
+  });
+}
+
+function renderProfile(){ updateUser(); }
+
+function renderAdmin(){
+  let h=getHist();
+  let users=JSON.parse(localStorage.getItem("art_users")||"[]");
+  let r=getRates();
+  let f=getFees();
+  let w=getWallets();
+  let vol=0, pend=0;
+  h.forEach(x=>{ vol+=x.amount; if(x.status==="En attente") pend++; });
+  $("#aVol").innerText=money(vol);
+  $("#aCount").innerText=h.length;
+  $("#aUsers").innerText=users.length;
+  $("#aPend").innerText=pend;
+  $("#aRateUSDT").value=r.USDT;
+  $("#aRateBTC").value=r.BTC;
+  $("#aRateETH").value=r.ETH;
+  $("#aFees").value=f;
+  $("#aAddrTRC").value=w.USDT_TRC20;
+  $("#aAddrERC").value=w.USDT_ERC20;
+  $("#aAddrBTC").value=w.BTC;
+  let kList=$("#aKycList");
+  let k=localStorage.getItem("art_kyc");
+  if(k){
+    let kj=JSON.parse(k);
+    kList.innerHTML=`<div class="historyItem"><div style="display:flex;justify-content:space-between"><span>${getUser()?.name||"User"} - ${kj.num}</span><span class="status st-pending">${kj.status}</span></div><div style="display:flex;gap:6px;margin-top:6px"><button class="btnTop" onclick="approveKYC()">Approuver</button><button class="btnTop" style="border-color:#ff3b3b;color:#ff3b3b" onclick="rejectKYC()">Rejeter</button></div></div>`;
+  }else{
+    kList.innerHTML='<div class="empty">Aucun KYC</div>';
+  }
+  let cont=$("#aHistList");
+  if(h.length===0){ cont.innerHTML='<div class="empty">Aucune tx</div>'; return; }
+  cont.innerHTML="";
+  h.forEach((it,idx)=>{
+    let d=document.createElement("div");
+    d.className="historyItem";
+    d.innerHTML=`<b>${it.id}</b> - ${it.mode.toUpperCase()} ${it.cryptoAmount} ${it.crypto}<br><small style="color:#8da0b1">${it.phone} • ${it.paymentMethod} • ${it.wallet.slice(0,12)}...</small><div style="display:flex;justify-content:space-between;margin-top:6px"><small>${it.date} - ${it.user}</small><div><button class="btnTop" onclick="valTx(${idx})">Valider</button> <button class="btnTop" style="border-color:#ff3b3b;color:#ff3b3b" onclick="delTx(${idx})">X</button></div></div>`;
+    cont.appendChild(d);
+  });
+}
+
+function approveKYC(){ localStorage.setItem("art_kyc", JSON.stringify({status:"ok"})); renderAdmin(); updateUser(); }
+function rejectKYC(){ localStorage.removeItem("art_kyc"); renderAdmin(); updateUser(); }
+function valTx(i){ let h=getHist(); h[i].status="Validée"; saveHist(h); renderAdmin(); renderHistory(); }
+function delTx(i){ if(!confirm("Supprimer?")) return; let h=getHist(); h.splice(i,1); saveHist(h); renderAdmin(); renderHistory(); }
+
+$("#aSaveRates").onclick=()=>{
+  let r={ USDT:parseFloat($("#aRateUSDT").value)||605, BTC:parseFloat($("#aRateBTC").value)||62000000, ETH:parseFloat($("#aRateETH").value)||2100000 };
+  let f=parseFloat($("#aFees").value)||0.02;
+  localStorage.setItem("art_rates", JSON.stringify(r));
+  localStorage.setItem("art_fees", f.toString());
+  alert("Taux sauvegardés");
+  calc();
+};
+
+$("#aSaveAddr").onclick=()=>{
+  let w={ USDT_TRC20:$("#aAddrTRC").value, USDT_ERC20:$("#aAddrERC").value, BTC:$("#aAddrBTC").value };
+  localStorage.setItem("art_wallets", JSON.stringify(w));
+  alert("Adress
