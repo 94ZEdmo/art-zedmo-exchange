@@ -3,169 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ART ZEDMO - V2 Pro</title>
+<title>ART ZEDMO V3 - Admin</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,-apple-system,sans-serif}
-body{background:#070a0f;color:#fff;padding:14px;padding-bottom:110px;max-width:480px;margin:auto}
-.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;font-size:18px}
-.btnTop{padding:7px 12px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:11px;margin-left:4px}
-.card{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:14px;margin-bottom:12px}
-.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
-.cryptoBox{background:#0a0e14;padding:12px;border-radius:14px;min-width:105px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer;flex-shrink:0}
-.cryptoON{border-color:#00ffb4;background:rgba(0,255,180,.15)!important;box-shadow:0 0 12px rgba(0,255,180,.2)}
-.tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36;margin-bottom:8px}
-.tabBtn{flex:1;padding:11px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f;transition:.2s}
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
+body{background:#070a0f;color:#fff;padding:12px;padding-bottom:110px;max-width:500px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;font-size:18px;user-select:none}
+.btnTop{padding:7px 11px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:10px;margin-left:4px}
+.card{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:14px;margin-bottom:12px}
+.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.cryptoBox{background:#0a0e14;padding:11px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer;flex-shrink:0}
+.cryptoON{border-color:#00ffb4!important;background:rgba(0,255,180,.15)!important}
+.tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f}
 .tabON{background:#fff!important;color:#000!important}
-.label{color:#9fb0bf;font-size:12px;margin:14px 0 6px;display:block;font-weight:600}
-.mmGroup,.netGroup{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
-.mmBtn{padding:10px 14px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:12px;font-weight:600;transition:.15s}
+.label{color:#9fb0bf;font-size:11px;margin:12px 0 5px;display:block;font-weight:600}
+.mmGroup,.netGroup{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.mmBtn{padding:9px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:11px;font-weight:600}
 .mmON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.netBtn{padding:7px 12px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:11px}
+.netBtn{padding:6px 11px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:10px}
 .netON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
-.row{display:flex;gap:8px;margin-top:8px}
-.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:14px;padding:13px;color:#fff;width:100%;outline:none;transition:.15s}
+.row{display:flex;gap:7px;margin-top:7px}
+.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:12px;padding:12px;color:#fff;width:100%;outline:none}
 .sel:focus,.inp:focus{border-color:#00ffb4}
-.inp.error{border-color:#ff3b3b}
-.sel{max-width:135px}
-.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:15px;border-radius:14px;font-weight:900;margin-top:14px;font-size:15px;transition:.1s}
-.mainBtn:disabled{background:#2a3a4a;color:#5a6b7d;cursor:not-allowed}
-.mainBtn:active:not(:disabled){transform:scale(.98)}
-.swap{width:48px;height:48px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:16px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:22px;font-weight:900;transition:.2s}
-.rate{text-align:center;margin:12px 0;color:#00ffb4;font-size:11px;font-weight:700;background:rgba(0,255,180,.08);padding:8px;border-radius:10px}
-.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:12px;padding:12px;margin-top:12px;font-size:12px;color:#9fb0bf}
-.line{display:flex;justify-content:space-between;gap:10px;margin-top:8px}
-.total{color:#00ffb4;font-size:14px}
-.warning{color:#ffcc66;font-size:11px;margin-top:7px}
-.navBar{position:fixed;bottom:10px;left:50%;transform:translateX(-50%);width:calc(100% - 20px);max-width:460px;background:#0e141e;border:1px solid #2a3a4a;border-radius:22px;display:flex;justify-content:space-around;padding:8px 0;z-index:9999;backdrop-filter:blur(10px)}
-.navItem{font-size:10px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:6px 14px;border-radius:12px;transition:.15s}
+.sel{max-width:125px}
+.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900;margin-top:12px;font-size:14px}
+.mainBtn:disabled{background:#2a3a4a;color:#5a6b7d}
+.swap{width:46px;height:46px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:14px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:20px;font-weight:900}
+.rate{text-align:center;margin:10px 0;color:#00ffb4;font-size:10px;font-weight:700;background:rgba(0,255,180,.08);padding:7px;border-radius:8px}
+.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:10px;padding:10px;margin-top:10px;font-size:11px;color:#9fb0bf}
+.line{display:flex;justify-content:space-between;margin-top:6px}
+.total{color:#00ffb4}
+.navBar{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);width:calc(100% - 16px);max-width:500px;background:#0e141e;border:1px solid #2a3a4a;border-radius:20px;display:flex;justify-content:space-around;padding:6px 0;z-index:999}
+.navItem{font-size:9px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:5px 12px;border-radius:10px}
 .navON{color:#00ffb4!important;background:rgba(0,255,180,.12)}
-.sec{display:none;animation:fade.2s}
-.secON{display:block}
-@keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.85);display:none;align-items:center;justify-content:center;z-index:99999;padding:16px;backdrop-filter:blur(4px)}
+.sec{display:none}.secON{display:block}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:99999;padding:14px}
 .modal.show{display:flex}
-.box{background:#121821;border:1px solid #1e2a36;border-radius:20px;padding:18px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
-.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:12px;border-radius:14px;margin-top:8px}
-.error{color:#ff5c5c;font-size:11px;margin-top:6px;min-height:14px}
-.empty{color:#8da0b1;font-size:13px;text-align:center;padding:20px}
-.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:14px;padding:12px;margin-top:8px;font-size:12px;position:relative}
-.status{padding:4px 10px;border-radius:20px;font-size:10px;font-weight:800}
-.st-pending{background:#ffcc66;color:#000}
-.qrWrap{display:flex;flex-direction:column;align-items:center;gap:10px;background:#fff;padding:16px;border-radius:16px;margin:12px auto}
-.walletAction{display:flex;gap:8px;margin-top:10px}
-.actionBtn{flex:1;padding:10px;border-radius:12px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-weight:700;font-size:12px}
+.box{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:16px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
+.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:11px;border-radius:12px;margin-top:8px}
+.error{color:#ff5c5c;font-size:10px;margin-top:5px;min-height:12px}
+.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:11px;margin-top:8px;font-size:11px}
+.status{padding:3px 8px;border-radius:20px;font-size:9px;font-weight:800}
+.st-pending{background:#ffcc66;color:#000}.st-success{background:#00ffb4;color:#000}.st-failed{background:#ff3b3b;color:#fff}
+.qrWrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;padding:14px;border-radius:14px;margin:10px auto}
+.actionBtn{flex:1;padding:9px;border-radius:10px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-weight:700;font-size:11px}
 .actionBtn.primary{background:#00ffb4;color:#000;border-color:#00ffb4}
-.badge{font-size:9px;padding:2px 6px;border-radius:10px;background:#1e2a36;color:#8da0b1;margin-left:6px}
+.adminStat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.statBox{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:10px;text-align:center}
+.statBox b{font-size:18px;color:#00ffb4}
 </style>
 </head>
 <body>
-<div class="top"><div class="logo">ART ZEDMO</div><div><button class="btnTop" id="bIns">Inscription</button><button class="btnTop" id="bKyc">KYC</button></div></div>
+<div class="top"><div class="logo" id="logo">ART ZEDMO</div><div><button class="btnTop" id="bIns">Inscription</button><button class="btnTop" id="bKyc">KYC</button><button class="btnTop" id="bAdmin" style="border-color:#ffcc66;color:#ffcc66">ADMIN</button></div></div>
+
 <div id="sE" class="sec secON">
 <div class="card">
-<div style="text-align:center;color:#6b7f8f;font-size:11px">SOLDE TOTAL ESTIMÉ</div>
-<div id="totalBalance" style="text-align:center;font-size:24px;font-weight:900">0 FCFA</div>
-<div class="cryptoRow" id="cryptoRow">
-<div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div>
-<div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div>
-<div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div>
-</div>
-<div style="text-align:center;margin-top:10px"><span id="kSt" style="background:#ff3b3b;color:#fff;padding:4px 10px;border-radius:20px;font-size:10px">KYC Non vérifié</span><span id="uSt" style="font-size:11px;color:#7d8fa0;margin-left:6px">Non connecté</span></div>
+<div style="text-align:center;color:#6b7f8f;font-size:10px">SOLDE TOTAL</div>
+<div id="totalBalance" style="text-align:center;font-size:22px;font-weight:900">0 FCFA</div>
+<div class="cryptoRow" id="cryptoRow"><div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div><div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div><div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div></div>
+<div style="text-align:center;margin-top:8px"><span id="kSt" style="background:#ff3b3b;color:#fff;padding:3px 8px;border-radius:20px;font-size:9px">KYC Non vérifié</span><span id="uSt" style="font-size:10px;color:#7d8fa0;margin-left:5px">Non connecté</span></div>
 </div>
 <div class="card">
 <div class="tabs"><button id="tBuy" class="tabBtn tabON">Acheter</button><button id="tSell" class="tabBtn">Vendre</button></div>
 <span class="label">Moyen de paiement</span>
 <div class="mmGroup" id="mmGroup"><button class="mmBtn mmON" data-mm="Orange Money">Orange</button><button class="mmBtn" data-mm="MTN MoMo">MTN</button><button class="mmBtn" data-mm="Wave">Wave</button><button class="mmBtn" data-mm="Moov Money">Moov</button><button class="mmBtn" data-mm="Celtiis Cash">Celtiis</button><button class="mmBtn" data-mm="Airtel Money">Airtel</button></div>
 <span class="label">Numéro + Pays</span>
-<div class="row"><select id="country" class="sel"><option value="+229">Bénin +229</option><option value="+225">CIV +225</option><option value="+221">Sénégal +221</option><option value="+226">Burkina +226</option><option value="+228">Togo +228</option><option value="+223">Mali +223</option><option value="+227">Niger +227</option><option value="+224">Guinée +224</option><option value="+237">Cameroun +237</option><option value="+242">Congo +242</option><option value="+241">Gabon +241</option><option value="+233">Ghana +233</option><option value="+234">Nigeria +234</option></select><input id="phone" class="inp" inputmode="tel" placeholder="01 XX XX XX XX"></div>
+<div class="row"><select id="country" class="sel"><option value="+229">Bénin +229</option><option value="+225">CIV +225</option><option value="+221">Sénégal +221</option><option value="+226">Burkina +226</option><option value="+228">Togo +228</option><option value="+223">Mali +223</option><option value="+227">Niger +227</option><option value="+224">Guinée +224</option><option value="+237">Cameroun +237</option><option value="+242">Congo +242</option><option value="+241">Gabon +241</option><option value="+233">Ghana +233</option><option value="+234">Nigeria +234</option></select><input id="phone" class="inp" inputmode="tel" placeholder="01 XX XX XX"></div>
 <div id="phoneError" class="error"></div>
 <span id="lPay" class="label">Vous payez (FCFA)</span>
-<div class="row"><div class="sel" style="max-width:70px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" step="1000" value="10000"></div>
+<div class="row"><div class="sel" style="max-width:65px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" value="10000"></div>
 <div id="amountError" class="error"></div>
 <div class="swap" id="sw">↕</div>
 <span class="label">Vous recevez</span>
 <div class="row"><select id="cSel" class="sel" style="max-width:100%"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
 <div class="row"><input id="cAmt" class="inp" readonly style="font-weight:800;background:#070a0f"></div>
 <div class="netGroup" id="netGroup"><button class="netBtn netON" data-net="TRC20">TRC20</button><button class="netBtn" data-net="ERC20">ERC20</button><button class="netBtn" data-net="BEP20">BEP20</button></div>
-<div class="walletBox"><span class="label">Adresse wallet (reception)</span><input id="wallet" class="inp" placeholder="Ex: T... pour TRC20, 0x... pour ERC20/BEP20"><div class="warning">Vérifie réseau + adresse. Envoi irréversible.</div><div id="walletError" class="error"></div></div>
+<div class="walletBox"><span class="label">Adresse wallet réception</span><input id="wallet" class="inp" placeholder="T... ou 0x..."><div id="walletError" class="error"></div></div>
 <div class="rate" id="rate">1 USDT = 605 FCFA | TRC20</div>
 <div class="feesBox"><div class="line"><span>Montant</span><b id="baseTxt">10 000 FCFA</b></div><div class="line"><span>Frais (2%)</span><b id="fTxt">200 FCFA</b></div><div class="line"><span id="totalLabel">Total à payer</span><b id="totTxt" class="total">10 200 FCFA</b></div></div>
 <button class="mainBtn" id="btnConf">Confirmer la transaction</button>
 </div>
 </div>
+
 <div id="sP" class="sec">
-<div class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div><div id="portfolioList" style="margin-top:12px"></div></div>
-<div class="card" id="walletDetail" style="display:none">
-<h3 id="wdTitle">Dépôt</h3>
-<div style="text-align:center;margin-top:8px"><small id="wdAddr" style="color:#8da0b1;word-break:break-all"></small></div>
-<div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:700">Scanne pour recevoir</small></div>
-<div class="walletAction"><button class="actionBtn" id="btnCopyAddr">Copier adresse</button><button class="actionBtn primary" id="btnShareAddr">Partager</button></div>
-<div style="margin-top:14px"><span class="label">Retrait</span><input id="withdrawAmt" class="inp" type="number" placeholder="Montant"><input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:8px"><div id="withdrawError" class="error"></div><button class="mainBtn" id="btnWithdraw">Retirer</button></div><div id="sPr" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:12px"><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div></div><button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button></div></div>
-<div class="navBar"><div id="nE" class="navItem navON">↕<br>Echange</div><div id="nP" class="navItem">💼<br>Portefeuille</div><div id="nH" class="navItem">🕒<br>Historique</div><div id="nPr" class="navItem">👤<br>Profil</div></div>
-<div class="modal" id="mAuth"><div class="box"><h3>Inscription</h3><input id="aName" class="inp" placeholder="Nom complet" style="margin-top:12px"><input id="aPhone" class="inp" placeholder="Téléphone" inputmode="tel" style="margin-top:8px"><div id="authError" class="error"></div><button class="mainBtn" id="doAuth">S'inscrire</button><button class="closeBtn" id="cAuth">Fermer</button></div></div>
-<div class="modal" id="mKyc"><div class="box"><h3>KYC</h3><p style="color:#8da0b1;font-size:12px;margin-top:8px">Préparation backend: en prod cette donnée partira à ton API.</p><input id="kNum" class="inp" placeholder="Numéro pièce d'identité" style="margin-top:12px"><input id="kType" class="inp" placeholder="Type: CNI / Passeport" style="margin-top:8px"><div id="kycError" class="error"></div><button class="mainBtn" id="doKyc">Envoyer KYC</button><button class="closeBtn" id="cKyc">Fermer</button></div></div>
-<div class="modal" id="mConfirm"><div class="box"><h3>Résumé</h3><div id="confirmDetails" style="font-size:12px;color:#aebdca;margin-top:12px;line-height:1.9"></div><button class="mainBtn" id="finalConfirm">Confirmer & envoyer WhatsApp</button><button class="closeBtn" id="cancelConfirm">Annuler</button></div></div>
-<script>
-const CONFIG={WA:"2290196587303",API_BASE:"",rates:{USDT:605,BTC:62000000,ETH:2100000},fees:0.02,minAmount:1000,wallets:{USDT_TRC20:"TQn9Y2khEsLJW1ChVWFMSMeRDow5KcbLSE",USDT_ERC20:"0x71C7656EC7ab88b098defB751B7401B5f6d8976F",USDT_BEP20:"0x71C7656EC7ab88b098defB751B7401B5f6d8976F",BTC:"bc1qxy2kqy2kqy2kqy2kqy2kqy2kqy2kqy2kqy2kqy",ETH_ERC20:"0x71C7656EC7ab88b098defB751B7401B5f6d8976F"},balances:{USDT:0,BTC:0,ETH:0}};
-const D=document;let state={crypto:"USDT",mode:"buy",mm:"Orange Money",net:"TRC20"};
-const money=v=>Math.round(v).toLocaleString("fr-FR")+" FCFA";
-const normalizePhone=v=>v.replace(/\D/g,"");
-const validPhone=v=>{const p=normalizePhone(v);return p.length>=8&&p.length<=15;};
-const getUser=()=>{try{return JSON.parse(localStorage.getItem("art_user"));}catch{return null;}};
-const getHist=()=>{try{return JSON.parse(localStorage.getItem("art_history"))||[];}catch{return [];}};
-const saveHist=h=>localStorage.setItem("art_history",JSON.stringify(h.slice(0,100)));
-const getBal=()=>{try{return JSON.parse(localStorage.getItem("art_bal"))||CONFIG.balances;}catch{return CONFIG.balances;}};
-const saveBal=b=>localStorage.setItem("art_bal",JSON.stringify(b));
-function go(id){D.querySelectorAll(".sec").forEach(s=>s.classList.remove("secON"));D.getElementById("s"+id)?.classList.add("secON");D.querySelectorAll(".navItem").forEach(n=>n.classList.remove("navON"));D.getElementById("n"+id)?.classList.add("navON");if(id==="P")renderPortfolio();if(id==="H")renderHistory();if(id==="Pr")renderProfile();}
-D.getElementById("nE").onclick=()=>go("E");D.getElementById("nP").onclick=()=>go("P");D.getElementById("nH").onclick=()=>go("H");D.getElementById("nPr").onclick=()=>go("Pr");
-D.querySelectorAll(".cryptoBox").forEach(box=>{
-  box.onclick=()=>{
-    D.querySelectorAll(".cryptoBox").forEach(x=>x.classList.remove("cryptoON"));
-    box.classList.add("cryptoON");state.crypto=box.dataset.c;D.getElementById("cSel").value=state.crypto;updateNetVisibility();calc();
-  };
-});
-D.querySelectorAll("#mmGroup.mmBtn").forEach(btn=>{
-  btn.onclick=()=>{D.querySelectorAll("#mmGroup.mmBtn").forEach(x=>x.classList.remove("mmON"));btn.classList.add("mmON");state.mm=btn.dataset.mm;};
-});
-D.querySelectorAll("#netGroup.netBtn").forEach(btn=>{
-  btn.onclick=()=>{D.querySelectorAll("#netGroup.netBtn").forEach(x=>x.classList.remove("netON"));btn.classList.add("netON");state.net=btn.dataset.net;calc();};
-});
-function setMode(m){state.mode=m;D.getElementById("tBuy").className=m==="buy"?"tabBtn tabON":"tabBtn";D.getElementById("tSell").className=m==="sell"?"tabBtn tabON":"tabBtn";D.getElementById("lPay").innerText=m==="buy"?"Vous payez (FCFA)":"Vous vendez (FCFA)";D.getElementById("totalLabel").innerText=m==="buy"?"Total à payer":"Vous recevez (après frais)";calc();}
-D.getElementById("tBuy").onclick=()=>setMode("buy");D.getElementById("tSell").onclick=()=>setMode("sell");
-D.getElementById("sw").onclick=()=>{setMode(state.mode==="buy"?"sell":"buy");D.getElementById("sw").style.transform="rotate(180deg)";setTimeout(()=>D.getElementById("sw").style.transform="",200);};
-function updateNetVisibility(){const btns=D.querySelectorAll("#netGroup.netBtn");if(state.crypto==="BTC"){btns.forEach(b=>b.style.display="none");state.net="BTC";}else if(state.crypto==="ETH"){btns.forEach(b=>b.style.display=b.dataset.net==="ERC20"?"inline-block":"none");state.net="ERC20";D.querySelectorAll("#netGroup.netBtn").forEach(x=>x.classList.remove("netON"));D.querySelector('[data-net="ERC20"]')?.classList.add("netON");}else{btns.forEach(b=>b.style.display="inline-block");if(!D.querySelector(`#netGroup.netBtn[data-net="${state.net}"]`)){state.net="TRC20";D.querySelectorAll("#netGroup.netBtn").forEach(x=>x.classList.remove("netON"));D.querySelector('[data-net="TRC20"]')?.classList.add("netON");}}}
-function calc(){const amt=parseFloat(D.getElementById("amt").value)||0;const rate=CONFIG.rates[state.crypto]||0;if(rate<=0){D.getElementById("cAmt").value="0";return;}const cryptoAmt=amt/rate;D.getElementById("cAmt").value=cryptoAmt.toFixed(state.crypto==="BTC"?8:state.crypto==="ETH"?6:2);D.getElementById("rate").innerText=`1 ${state.crypto} = ${rate.toLocaleString("fr-FR")} FCFA | ${state.net}`;const fee=amt*CONFIG.fees;D.getElementById("baseTxt").innerText=money(amt);D.getElementById("fTxt").innerText=money(fee);D.getElementById("totTxt").innerText=state.mode==="buy"?money(amt+fee):money(Math.max(0,amt-fee));validateLive();}
-D.getElementById("amt").oninput=calc;D.getElementById("cSel").onchange=function(){state.crypto=this.value;D.querySelectorAll(".cryptoBox").forEach(x=>x.classList.toggle("cryptoON",x.dataset.c===state.crypto));updateNetVisibility();calc();};
-function validateLive(){let ok=true;const amt=parseFloat(D.getElementById("amt").value)||0;const phone=D.getElementById("phone").value.trim();const wallet=D.getElementById("wallet").value.trim();D.getElementById("amountError").innerText="";D.getElementById("phoneError").innerText="";D.getElementById("walletError").innerText="";D.getElementById("amt").classList.remove("error");if(amt>0&&amt<CONFIG.minAmount){D.getElementById("amountError").innerText=`Minimum ${CONFIG.minAmount} FCFA`;ok=false;D.getElementById("amt").classList.add("error");}if(phone&&!validPhone(phone)){D.getElementById("phoneError").innerText="Numéro invalide";ok=false;}if(wallet&&wallet.length>0&&wallet.length<10){D.getElementById("walletError").innerText="Adresse trop courte";ok=false;}D.getElementById("btnConf").disabled=!ok||amt===0;return ok;}
-D.getElementById("phone").oninput=validateLive;D.getElementById("wallet").oninput=validateLive;
-function validateFull(){validateLive();const amt=parseFloat(D.getElementById("amt").value)||0;const phone=D.getElementById("phone").value.trim();const wallet=D.getElementById("wallet").value.trim();if(amt<CONFIG.minAmount){D.getElementById("amountError").innerText=`Minimum ${CONFIG.minAmount}`;return false;}if(!validPhone(phone)){D.getElementById("phoneError").innerText="Numéro requis";return false;}if(wallet.length<10){D.getElementById("walletError").innerText="Adresse wallet requise";return false;}if(state.net==="TRC20"&&!wallet.startsWith("T")){D.getElementById("walletError").innerText="Adresse TRC20 doit commencer par T";return false;}if((state.net==="ERC20"||state.net==="BEP20")&&!wallet.startsWith("0x")){D.getElementById("walletError").innerText="Adresse doit commencer par 0x";return false;}return true;}
-D.getElementById("bIns").onclick=()=>D.getElementById("mAuth").classList.add("show");D.getElementById("cAuth").onclick=()=>D.getElementById("mAuth").classList.remove("show");
-D.getElementById("doAuth").onclick=()=>{const name=D.getElementById("aName").value.trim();const phone=D.getElementById("aPhone").value.trim();D.getElementById("authError").innerText="";if(name.length<2){D.getElementById("authError").innerText="Nom requis";return;}if(!validPhone(phone)){D.getElementById("authError").innerText="Téléphone invalide";return;}localStorage.setItem("art_user",JSON.stringify({name,phone,createdAt:new Date().toISOString()}));updateUser();D.getElementById("mAuth").classList.remove("show");};
-D.getElementById("bKyc").onclick=()=>D.getElementById("mKyc").classList.add("show");D.getElementById("cKyc").onclick=()=>D.getElementById("mKyc").classList.remove("show");
-D.getElementById("doKyc").onclick=()=>{const num=D.getElementById("kNum").value.trim();if(num.length<4){D.getElementById("kycError").innerText="Numéro invalide";return;}localStorage.setItem("art_kyc",JSON.stringify({status:"pending",num,type:D.getElementById("kType").value,at:new Date().toISOString()}));updateUser();D.getElementById("mKyc").classList.remove("show");setTimeout(()=>{localStorage.setItem("art_kyc",JSON.stringify({status:"ok"}));updateUser();},1200);};
-function updateUser(){const u=getUser();if(u){D.getElementById("uSt").innerText="✔ "+u.name;D.getElementById("pN").innerText=u.name;D.getElementById("pP").innerText=u.phone;}else{D.getElementById("uSt").innerText="Non connecté";D.getElementById("pN").innerText="Non connecté";D.getElementById("pP").innerText="-";}const k=localStorage.getItem("art_kyc");if(k){const kj=JSON.parse(k);if(kj.status==="ok"){D.getElementById("kSt").innerText="KYC Vérifié ✔";D.getElementById("kSt").style.background="#00ffb4";D.getElementById("kSt").style.color="#000";D.getElementById("pK").innerText="Vérifié ✔";}else{D.getElementById("kSt").innerText="KYC En attente";D.getElementById("kSt").style.background="#ffcc66";D.getElementById("kSt").style.color="#000";D.getElementById("pK").innerText="En attente";}}else{D.getElementById("kSt").innerText="KYC Non vérifié";D.getElementById("kSt").style.background="#ff3b3b";D.getElementById("kSt").style.color="#fff";D.getElementById("pK").innerText="Non vérifié";}D.getElementById("pT").innerText=getHist().length;calcBalance();}
-function calcBalance(){const bal=getBal();let total=0;Object.keys(bal).forEach(k=>{total+=bal[k]*(CONFIG.rates[k]||0);});D.getElementById("totalBalance").innerText=money(total);}
-function renderPortfolio(){const bal=getBal();const cont=D.getElementById("portfolioList");cont.innerHTML="";["USDT","BTC","ETH"].forEach(c=>{const div=document.createElement("div");div.className="historyItem";const rate=CONFIG.rates[c];const val=bal[c]||0;div.innerHTML=`<div style="display:flex;justify-content:space-between;align-items:center"><div><b>${c}</b> <span class="badge">${c==="USDT"?state.net:"NATIVE"}</span><br><small style="color:#8da0b1">${val} ${c} ≈ ${money(val*rate)}</small></div><div style="display:flex;gap:6px"><button class="btnTop" onclick="openDeposit('${c}')">Dépôt</button><button class="btnTop" style="border-color:#ffcc66;color:#ffcc66" onclick="openDeposit('${c}')">Retrait</button></div></div>`;cont.appendChild(div);});}
-let currentDeposit=null;
-function openDeposit(c){currentDeposit=c;let addr="";if(c==="USDT"){addr=state.net==="ERC20"?CONFIG.wallets.USDT_ERC20:state.net==="BEP20"?CONFIG.wallets.USDT_BEP20:CONFIG.wallets.USDT_TRC20;}else if(c==="BTC")addr=CONFIG.wallets.BTC;else addr=CONFIG.wallets.ETH_ERC20;D.getElementById("wdTitle").innerText=`Dépôt ${c} - ${state.net}`;D.getElementById("wdAddr").innerText=addr;D.getElementById("walletDetail").style.display="block";D.getElementById("qrcode").innerHTML="";new QRCode(D.getElementById("qrcode"),{text:addr,width:160,height:160});window.scrollTo({top:D.getElementById("walletDetail").offsetTop-20,behavior:"smooth"});}
-D.getElementById("closeWD").onclick=()=>D.getElementById("walletDetail").style.display="none";
-D.getElementById("btnCopyAddr").onclick=()=>{navigator.clipboard.writeText(D.getElementById("wdAddr").innerText);alert("Adresse copiée");};
-D.getElementById("btnShareAddr").onclick=()=>{if(navigator.share){navigator.share({title:"Mon adresse "+currentDeposit,text:D.getElementById("wdAddr").innerText});}};
-D.getElementById("btnWithdraw").onclick=()=>{const amt=parseFloat(D.getElementById("withdrawAmt").value)||0;const to=D.getElementById("withdrawAddr").value.trim();if(amt<=0){D.getElementById("withdrawError").innerText="Montant invalide";return;}if(to.length<10){D.getElementById("withdrawError").innerText="Adresse invalide";return;}alert(`Retrait ${amt} ${currentDeposit} vers ${to} demandé.`);D.getElementById("walletDetail").style.display="none";};
-D.getElementById("btnRefreshBal").onclick=()=>{calcBalance();renderPortfolio();};
-D.getElementById("btnConf").onclick=()=>{if(!getUser()){D.getElementById("mAuth").classList.add("show");return;}if(!localStorage.getItem("art_kyc")){D.getElementById("mKyc").classList.add("show");return;}if(!validateFull())return;const amt=parseFloat(D.getElementById("amt").value);const cAmt=D.getElementById("cAmt").value;const phone=D.getElementById("phone").value.trim();const country=D.getElementById("country").value;const wallet=D.getElementById("wallet").value.trim();const fee=amt*CONFIG.fees;const total=state.mode==="buy"?amt+fee:amt-fee;D.getElementById("confirmDetails").innerHTML=`<b>Type:</b> ${state.mode.toUpperCase()}<br><b>Crypto:</b> ${cAmt} ${state.crypto}<br><b>Réseau:</b> ${state.net}<br><b>Montant:</b> ${money(amt)}<br><b>Frais:</b> ${money(fee)}<br><b>Total:</b> ${money(total)}<br><b>Paiement:</b> ${state.mm}<br><b>Tél:</b> ${country} ${phone}<br><b>Wallet:</b> ${wallet}`;D.getElementById("mConfirm").classList.add("show");};
-D.getElementById("cancelConfirm").onclick=()=>D.getElementById("mConfirm").classList.remove("show");
-D.getElementById("finalConfirm").onclick=()=>{const u=getUser();const amt=parseFloat(D.getElementById("amt").value);const cAmt=D.getElementById("cAmt").value;const phone=D.getElementById("phone").value.trim();const country=D.getElementById("country").value;const wallet=D.getElementById("wallet").value.trim();const fee=amt*CONFIG.fees;const total=state.mode==="buy"?amt+fee:amt-fee;const tx={id:"AZ-"+Date.now(),date:new Date().toLocaleString("fr-FR"),mode:state.mode,crypto:state.crypto,cryptoAmount:cAmt,network:state.net,amount:amt,fee,total,paymentMethod:state.mm,phone:country+" "+phone,wallet,status:"En attente"};const h=getHist();h.unshift(tx);saveHist(h);if(state.mode==="buy"){const bal=getBal();bal[state.crypto]=(bal[state.crypto]||0)+parseFloat(cAmt);saveBal(bal);}const msg=`Bonjour ART ZEDMO,%0ANouvelle demande%0A%0AID:${tx.id}%0AType:${tx.mode.toUpperCase()}%0A${amt} FCFA -> ${cAmt} ${tx.crypto}%0ARéseau:${state.net}%0AFrais:${Math.round(fee)}%0ATotal:${Math.round(total)}%0AMoyen:${state.mm}%0ATel:${country} ${phone}%0AWallet:${wallet}%0AClient:${u.name}`;D.getElementById("mConfirm").classList.remove("show");renderHistory();calcBalance();window.open("https://wa.me/"+CONFIG.WA+"?text="+msg,"_blank");};
-function renderHistory(){const h=getHist();const cont=D.getElementById("history");if(h.length===0){cont.innerHTML='<div class="empty">Aucune transaction</div>';return;}cont.innerHTML="";h.forEach(it=>{const d=document.createElement("div");d.className="historyItem";d.innerHTML=`<div style="display:flex;justify-content:space-between"><b>${it.mode.toUpperCase()} ${it.crypto}</b><small>${it.cryptoAmount} ${it.crypto}</small></div><div style="color:#8da0b1;margin-top:4px">${it.amount.toLocaleString("fr-FR")} FCFA • ${it.paymentMethod}</div><div style="display:flex;justify-content:space-between;margin-top:6px"><small style="color:#5a6b7d">${it.date}</small><span class="status st-pending">${it.status}</span></div>`;cont.appendChild(d);});}
-function renderProfile(){updateUser();}
-D.getElementById("clearHist").onclick=()=>{if(confirm("Effacer historique?")){localStorage.removeItem("art_history");renderHistory();}};
-D.getElementById("logoutBtn").onclick=()=>{if(confirm("Déconnexion?")){localStorage.removeItem("art_user");localStorage.removeItem("art_kyc");updateUser();go("E");}};
-updateUser();renderHistory();renderPortfolio();updateNetVisibility();calc();
-</script>
-</body>
-</html>
-<button class="closeBtn" id="closeWD">Fermer</button>
+<div class="card"><div style="display:flex;justify-content:space-between"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div><div id="portfolioList" style="margin-top:10px"></div></div>
+<div class="card" id="walletDetail" style="display:none"><h3 id="wdTitle">Dépôt</h3><div style="text-align:center;margin-top:6px"><small id="wdAddr" style="color:#8da0b1;word-break:break-all;font-size:11px"></small></div><div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:700;font-size:11px">QR Code de dépôt</small></div><div style="display:flex;gap:8px"><button class="actionBtn" id="btnCopyAddr">Copier</button><button class="actionBtn primary" id="btnShareAddr">Partager</button></div><div style="margin-top:12px"><span class="label">Retrait vers autre wallet</span><input id="withdrawAmt" class="inp" type="number" placeholder="Montant"><input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:6px"><div id="withdrawError" class="error"></div><button class="mainBtn" id="btnWithdraw">Demander retrait</button></div><button class="closeBtn" id="closeWD">Fermer</button></div>
+</div>
+
+<div id="sH" class="sec"><div class="card"><div style="display:flex;justify-content:space-between"><h3>Historique</h3><button class="btnTop" id="clearHist">Effacer</button></div><div id="history"></div></div></div><!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ART ZEDMO V3 - Admin</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,sans-serif}
+body{background:#070a0f;color:#fff;padding:12px;padding-bottom:110px;max-width:500px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.logo{color:#00ffb4;font-weight:900;letter-spacing:1px;font-size:18px;user-select:none}
+.btnTop{padding:7px 11px;border-radius:20px;border:1.5px solid #00ffb4;background:none;color:#00ffb4;font-weight:800;font-size:10px;margin-left:4px}
+.card{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:14px;margin-bottom:12px}
+.cryptoRow{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.cryptoBox{background:#0a0e14;padding:11px;border-radius:14px;min-width:100px;border:1.5px solid #1e2a36;text-align:center;cursor:pointer;flex-shrink:0}
+.cryptoON{border-color:#00ffb4!important;background:rgba(0,255,180,.15)!important}
+.tabs{display:flex;background:#0e141e;border-radius:30px;padding:4px;border:1px solid #1e2a36}
+.tabBtn{flex:1;padding:10px;border:none;border-radius:24px;font-weight:800;background:transparent;color:#6b7f8f}
+.tabON{background:#fff!important;color:#000!important}
+.label{color:#9fb0bf;font-size:11px;margin:12px 0 5px;display:block;font-weight:600}
+.mmGroup,.netGroup{display:flex;gap:7px;flex-wrap:wrap;margin-top:6px}
+.mmBtn{padding:9px 13px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-size:11px;font-weight:600}
+.mmON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
+.netBtn{padding:6px 11px;border-radius:20px;border:1.5px solid #1e2a36;background:#0e141e;color:#8a9bb0;font-weight:700;font-size:10px}
+.netON{background:#00ffb4!important;color:#000!important;border-color:#00ffb4!important}
+.row{display:flex;gap:7px;margin-top:7px}
+.sel,.inp{background:#0a0e14;border:1.5px solid #1e2a36;border-radius:12px;padding:12px;color:#fff;width:100%;outline:none}
+.sel:focus,.inp:focus{border-color:#00ffb4}
+.sel{max-width:125px}
+.mainBtn{width:100%;background:#00ffb4;color:#000;border:none;padding:14px;border-radius:12px;font-weight:900;margin-top:12px;font-size:14px}
+.mainBtn:disabled{background:#2a3a4a;color:#5a6b7d}
+.swap{width:46px;height:46px;border:2px solid #00ffb4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:14px auto;color:#00ffb4;cursor:pointer;background:#0e141e;font-size:20px;font-weight:900}
+.rate{text-align:center;margin:10px 0;color:#00ffb4;font-size:10px;font-weight:700;background:rgba(0,255,180,.08);padding:7px;border-radius:8px}
+.feesBox{background:#0a0e14;border:1px dashed #234;border-radius:10px;padding:10px;margin-top:10px;font-size:11px;color:#9fb0bf}
+.line{display:flex;justify-content:space-between;margin-top:6px}
+.total{color:#00ffb4}
+.navBar{position:fixed;bottom:8px;left:50%;transform:translateX(-50%);width:calc(100% - 16px);max-width:500px;background:#0e141e;border:1px solid #2a3a4a;border-radius:20px;display:flex;justify-content:space-around;padding:6px 0;z-index:999}
+.navItem{font-size:9px;color:#5a6b7d;display:flex;flex-direction:column;align-items:center;cursor:pointer;padding:5px 12px;border-radius:10px}
+.navON{color:#00ffb4!important;background:rgba(0,255,180,.12)}
+.sec{display:none}.secON{display:block}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.88);display:none;align-items:center;justify-content:center;z-index:99999;padding:14px}
+.modal.show{display:flex}
+.box{background:#121821;border:1px solid #1e2a36;border-radius:18px;padding:16px;width:100%;max-width:400px;max-height:92vh;overflow:auto}
+.closeBtn{width:100%;background:#0a0e14;color:#fff;border:1px solid #1e2a36;padding:11px;border-radius:12px;margin-top:8px}
+.error{color:#ff5c5c;font-size:10px;margin-top:5px;min-height:12px}
+.historyItem{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:11px;margin-top:8px;font-size:11px}
+.status{padding:3px 8px;border-radius:20px;font-size:9px;font-weight:800}
+.st-pending{background:#ffcc66;color:#000}.st-success{background:#00ffb4;color:#000}.st-failed{background:#ff3b3b;color:#fff}
+.qrWrap{display:flex;flex-direction:column;align-items:center;gap:8px;background:#fff;padding:14px;border-radius:14px;margin:10px auto}
+.actionBtn{flex:1;padding:9px;border-radius:10px;border:1.5px solid #1e2a36;background:#0e141e;color:#fff;font-weight:700;font-size:11px}
+.actionBtn.primary{background:#00ffb4;color:#000;border-color:#00ffb4}
+.adminStat{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.statBox{background:#0a0e14;border:1px solid #1e2a36;border-radius:12px;padding:10px;text-align:center}
+.statBox b{font-size:18px;color:#00ffb4}
+</style>
+</head>
+<body>
+<div class="top"><div class="logo" id="logo">ART ZEDMO</div><div><button class="btnTop" id="bIns">Inscription</button><button class="btnTop" id="bKyc">KYC</button><button class="btnTop" id="bAdmin" style="border-color:#ffcc66;color:#ffcc66">ADMIN</button></div></div>
+
+<div id="sE" class="sec secON">
+<div class="card">
+<div style="text-align:center;color:#6b7f8f;font-size:10px">SOLDE TOTAL</div>
+<div id="totalBalance" style="text-align:center;font-size:22px;font-weight:900">0 FCFA</div>
+<div class="cryptoRow" id="cryptoRow"><div class="cryptoBox cryptoON" data-c="USDT">USDT<br><b>605 FCFA</b></div><div class="cryptoBox" data-c="BTC">BTC<br><b>62M</b></div><div class="cryptoBox" data-c="ETH">ETH<br><b>2.1M</b></div></div>
+<div style="text-align:center;margin-top:8px"><span id="kSt" style="background:#ff3b3b;color:#fff;padding:3px 8px;border-radius:20px;font-size:9px">KYC Non vérifié</span><span id="uSt" style="font-size:10px;color:#7d8fa0;margin-left:5px">Non connecté</span></div>
+</div>
+<div class="card">
+<div class="tabs"><button id="tBuy" class="tabBtn tabON">Acheter</button><button id="tSell" class="tabBtn">Vendre</button></div>
+<span class="label">Moyen de paiement</span>
+<div class="mmGroup" id="mmGroup"><button class="mmBtn mmON" data-mm="Orange Money">Orange</button><button class="mmBtn" data-mm="MTN MoMo">MTN</button><button class="mmBtn" data-mm="Wave">Wave</button><button class="mmBtn" data-mm="Moov Money">Moov</button><button class="mmBtn" data-mm="Celtiis Cash">Celtiis</button><button class="mmBtn" data-mm="Airtel Money">Airtel</button></div>
+<span class="label">Numéro + Pays</span>
+<div class="row"><select id="country" class="sel"><option value="+229">Bénin +229</option><option value="+225">CIV +225</option><option value="+221">Sénégal +221</option><option value="+226">Burkina +226</option><option value="+228">Togo +228</option><option value="+223">Mali +223</option><option value="+227">Niger +227</option><option value="+224">Guinée +224</option><option value="+237">Cameroun +237</option><option value="+242">Congo +242</option><option value="+241">Gabon +241</option><option value="+233">Ghana +233</option><option value="+234">Nigeria +234</option></select><input id="phone" class="inp" inputmode="tel" placeholder="01 XX XX XX"></div>
+<div id="phoneError" class="error"></div>
+<span id="lPay" class="label">Vous payez (FCFA)</span>
+<div class="row"><div class="sel" style="max-width:65px;text-align:center;font-weight:800">CFA</div><input id="amt" class="inp" type="number" min="1000" value="10000"></div>
+<div id="amountError" class="error"></div>
+<div class="swap" id="sw">↕</div>
+<span class="label">Vous recevez</span>
+<div class="row"><select id="cSel" class="sel" style="max-width:100%"><option value="USDT">USDT - TRC20</option><option value="BTC">BTC</option><option value="ETH">ETH</option></select></div>
+<div class="row"><input id="cAmt" class="inp" readonly style="font-weight:800;background:#070a0f"></div>
+<div class="netGroup" id="netGroup"><button class="netBtn netON" data-net="TRC20">TRC20</button><button class="netBtn" data-net="ERC20">ERC20</button><button class="netBtn" data-net="BEP20">BEP20</button></div>
+<div class="walletBox"><span class="label">Adresse wallet réception</span><input id="wallet" class="inp" placeholder="T... ou 0x..."><div id="walletError" class="error"></div></div>
+<div class="rate" id="rate">1 USDT = 605 FCFA | TRC20</div>
+<div class="feesBox"><div class="line"><span>Montant</span><b id="baseTxt">10 000 FCFA</b></div><div class="line"><span>Frais (2%)</span><b id="fTxt">200 FCFA</b></div><div class="line"><span id="totalLabel">Total à payer</span><b id="totTxt" class="total">10 200 FCFA</b></div></div>
+<button class="mainBtn" id="btnConf">Confirmer la transaction</button>
 </div>
 </div>
+
+<div id="sP" class="sec">
+<div class="card"><div style="display:flex;justify-content:space-between"><h3>Portefeuille</h3><button class="btnTop" id="btnRefreshBal">Actualiser</button></div><div id="portfolioList" style="margin-top:10px"></div></div>
+<div class="card" id="walletDetail" style="display:none"><h3 id="wdTitle">Dépôt</h3><div style="text-align:center;margin-top:6px"><small id="wdAddr" style="color:#8da0b1;word-break:break-all;font-size:11px"></small></div><div class="qrWrap"><div id="qrcode"></div><small style="color:#000;font-weight:700;font-size:11px">QR Code de dépôt</small></div><div style="display:flex;gap:8px"><button class="actionBtn" id="btnCopyAddr">Copier</button><button class="actionBtn primary" id="btnShareAddr">Partager</button></div><div style="margin-top:12px"><span class="label">Retrait vers autre wallet</span><input id="withdrawAmt" class="inp" type="number" placeholder="Montant"><input id="withdrawAddr" class="inp" placeholder="Adresse destination" style="margin-top:6px"><div id="withdrawError" class="error"></div><button class="mainBtn" id="btnWithdraw">Demander retrait</button></div><button class="closeBtn" id="closeWD">Fermer</button></div>
+</div>
+
 <div id="sH" class="sec"><div class="card"><div style="display:flex;justify-content:space-between"><h3>Historique</h3><button class="btnTop" id="clearHist">Effacer</button></div><div id="history"></div></div></div>
+<div id="sPr" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:10px"><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div></div><button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button></div></div>
+<div id="sPr" class="sec"><div class="card"><h3>Profil & KYC</h3><div style="margin-top:10px"><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Nom</span><b id="pN">Non connecté</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Téléphone</span><b id="pP">-</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>KYC</span><b id="pK">Non vérifié</b></div></div><div class="historyItem"><div style="display:flex;justify-content:space-between"><span>Transactions</span><b id="pT">0</b></div></div></div><button class="mainBtn" id="logoutBtn" style="background:#0a0e14;color:#fff;border:1px solid #1e2a36">Déconnexion</button></div></div>
